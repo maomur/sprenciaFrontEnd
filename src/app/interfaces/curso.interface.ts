@@ -10,4 +10,5 @@ export interface Curso {
     precio: number;
     estado: string;
     isDelete: string;
+    fecha_inicio: string;
 }

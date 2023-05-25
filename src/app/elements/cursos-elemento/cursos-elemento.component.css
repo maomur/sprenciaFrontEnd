@@ -1,0 +1,23 @@
+.cardW {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.cardWBox {
+    width: 250px;
+    margin: 0.4em;
+}
+
+.infoCurso {
+    font-size: 0.8em;
+    position: absolute;
+    top: 10px;
+    background-color: #0d6dfdb0;
+    padding: 10px 10px 0px 10px;
+}
+
+.infoCurso p {
+    color: white;
+}

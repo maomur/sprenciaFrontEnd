@@ -26,6 +26,7 @@ import { CategoriasComponent } from './elements/categorias/categorias.component'
 import { LoginUsersComponent } from './elements/login-users/login-users.component';
 import { PoliticasComponent } from './elements/politicas/politicas.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
+import { CursosElementoComponent } from './elements/cursos-elemento/cursos-elemento.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-
     CategoriasComponent,
     LoginUsersComponent,
     PoliticasComponent,
-    RecuperarClaveComponent
+    RecuperarClaveComponent,
+    CursosElementoComponent
   ],
   imports: [
     BrowserModule,
