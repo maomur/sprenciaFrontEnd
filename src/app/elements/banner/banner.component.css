@@ -1,0 +1,16 @@
+.img-banner {
+    filter: brightness(30%);
+}
+
+.title-carrousel {
+    font-size: 4dvw;
+}
+
+.subtitle-carrousel {
+    font-size: 2.5dvw;
+}
+
+.title-category {
+    font-size: 2em;
+    text-align: center;
+}

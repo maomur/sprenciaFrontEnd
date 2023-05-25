@@ -1,0 +1,39 @@
+<!-- Modal Login -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Acceso Usuarios</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img class="logoSprencia" src="../../../assets/img/favico.png" alt="Logo Sprencia">
+                </div>
+                <form class="px-5 py-3">
+                    <div class="p-1 d-flex align-items-center">
+                        <i class=" bi bi-person-circle px-1"></i>
+                        <input class="form-control" type="text" placeholder="Usuario">
+                    </div>
+                    <div class="p-1 d-flex align-items-center">
+                        <i class="bi bi-lock-fill px-1"></i>
+                        <input class="form-control" type="password" placeholder="Password">
+                    </div>
+                    <div class="p-1 d-flex align-items-center">
+                        <i class="bi bi-box-arrow-right px-1 text-light"></i>
+                        <input class="btn btn-primary w-100" type="submit" value="Iniciar Sesión">
+                    </div>
+                    <div class="mt-3">
+                        <div class="text-center"><a data-bs-dismiss="modal" [routerLink]="['/recuperar-clave']">¿Olvidó
+                                su contraseña?</a></div>
+                        <div class="text-center">ó</div>
+                        <div class="text-center">¿No tienes una cuenta? Regístrate<span><a [routerLink]="['/registro']"
+                                    data-bs-dismiss="modal">
+                                    AQUÍ</a></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

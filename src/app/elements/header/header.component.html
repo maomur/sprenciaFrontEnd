@@ -1,0 +1,69 @@
+<header class="container-fluid">
+    <!-- Barra Superior -->
+    <div class="bg-light text-light row text-center align-items-stretch">
+        <div class="col-12 col-md-4 bg-warning pt-1"><i class="bi bi-telephone-fill mx-2"></i>602 06 48 04</div>
+        <div class="col-12 col-md-4 bg-success pt-1"><i class="bi bi-envelope mx-2"></i>info@sprencia.com</div>
+        <div class="col-12 col-md-4 bg-primary"><span><a href="https://facebook.com" target="_blank"><i
+                        class="bi bi-facebook fs-4 mx-1 text-light"></i></a></span><span><a
+                    href="https://instagram.com/">
+                    <i class="bi bi-instagram fs-4 mx-1 text-light"></i>
+                </a></span><span><a
+                    href="https://wa.me/34641870894?text=Hola%2C%20quiero%20una%20asesor%C3%ADa%20personalizada%20sobre%20un%20curso"
+                    target="_blank"><i class="bi bi-whatsapp fs-4 mx-1 text-light"></i></a></span>
+        </div>
+        <!-- Logo, Menú y Buscador -->
+        <div class="">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center">
+                    <div>
+                        <a class="navbar-brand" href="/">
+                            <img class="logo" src="/assets/img/sprencia-logo.png" alt="sprencia-logo">
+                        </a>
+                    </div>
+                    <div>
+                        <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-2">
+                            <a class="nav-link active" aria-current="page" routerLinkActive="active"
+                                [routerLink]="['/']">Inicio</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" routerLink="active" [routerLink]="['/sobre-nosotros']">Sprencia</a>
+                        </li>
+                        <li class="nav-item dropdown px-2">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Actividades
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Vender por Internet</a></li>
+                                <li><a class="dropdown-item" href="#">Marketing Digital</a></li>
+                                <li><a class="dropdown-item" href="#">Diseño Web Básico</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" routerLink="active" [routerLink]="['/contacto']">Contacto</a>
+                        </li>
+                        <li class="nav-item bg-primary" px-2 data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <a class="nav-link text-light cursorPointer"><span><i class="bi bi-person-circle"> </i>
+                                </span> ACCESO</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<app-login-users></app-login-users>

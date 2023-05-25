@@ -1,0 +1,12 @@
+.logo {
+    width: 100%;
+    max-width: 300px;
+}
+
+.small-class {
+    text-decoration: none;
+}
+
+.cursorPointer {
+    cursor: pointer;
+}

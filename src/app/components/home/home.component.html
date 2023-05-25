@@ -1,0 +1,42 @@
+<app-banner></app-banner>
+
+<!------------- Curssos Start ------------->
+
+<div class="container py-5">
+    <section class="">
+        <h2 class="text-center p-4">Últimos Cursos</h2>
+    </section>
+    <section class="container my-1 px-0 px-md-2">
+        <div class="card-cursos cardW">
+            <div class="card shadow border-0 cardWBox" *ngFor="let curso of cursos; let i = index">
+                <div>
+                    <img [src]="curso.foto1" class="card-img-top w-100" alt="Curso Administración de Redes Sociales">
+                    <div class="infoCurso">
+                        <p>Junio 30</p>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{curso.nombre}}</h5>
+                        <p class="card-text">{{curso.descripcion}}</p>
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-primary w-100">Ver Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center my-5 mx-0 mx-md-5"><button class="btn btn-dark w-25 w-md-100">Ver todos</button></div>
+</div>
+
+
+<app-categorias></app-categorias>
+
+<app-call-to-action></app-call-to-action>
+
+<app-sobre-sprencia></app-sobre-sprencia>
+
+<app-call-to-action-dos></app-call-to-action-dos>
+
+<app-testimonios></app-testimonios>
+
+<app-faqs></app-faqs>
