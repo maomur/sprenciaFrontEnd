@@ -39,13 +39,44 @@
                         </li>
                         <li class="nav-item dropdown px-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false" [routerLink]="'/cursos'">
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Actividades
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Vender por Internet</a></li>
-                                <li><a class="dropdown-item" href="#">Marketing Digital</a></li>
-                                <li><a class="dropdown-item" href="#">Diseño Web Básico</a></li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/historia']">Historia</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/literatura']">Literatura</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/filosofia']">Filosofía</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/informatica']">Informática</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/decoracion']">Decoración</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" [routerLink]="['/resultado-categoria/arte']">Arte</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/geografia']">Geografía</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" [routerLink]="['/resultado-categoria/moda']">Moda</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        [routerLink]="['/resultado-categoria/ciencias']">Ciencias</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item px-2">
@@ -57,13 +88,46 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
+                            name="nombre" [(ngModel)]="termn">
+
+                        <input class="btn btn-dark" type="submit" value="Buscar" (click)="searchWord()"
+                            data-bs-toggle="modal" data-bs-target="#modalBuscador">
                     </form>
                 </div>
             </nav>
         </div>
     </div>
 </header>
+
+
+
+<!-- Modal Buscador -->
+<div class="modal fade" id="modalBuscador" tabindex="-1" aria-labelledby="modalBuscadorLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBuscadorLabel">Tus Resultados</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <ul>
+                        <li class="list-unstyled my-3" *ngFor="let item of cursos"><i
+                                class="bi bi-arrow-bar-right px-2 text-primary"></i><a
+                                class="text-decoration-none text-dark" [routerLink]="['/curso/' , item.id]"
+                                data-bs-dismiss="modal">{{item.nombre}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <app-login-users></app-login-users>

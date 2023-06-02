@@ -1,6 +1,22 @@
 <div class="bg-primary p-4">
     <h1 class="text-light text-center">Recuperar Clave</h1>
 </div>
-<div class="container p-5">
-    Sección en Construcción
+<div class="container mt-5 text-center">
+    <h2>¿Haz olvidado tu contraseña?</h2>
+    <h3 class="fs-5">No te preocupes, nosotros te ayudamos a recuperarla</h3>
+</div>
+
+<div class="container text-center align p-2 p-md-5">
+    <form>
+        <div class="p-2">
+            <input class="form-control" type="email" placeholder="Email">
+        </div>
+        <div class="p-2">
+            <button class="btn btn-success">Reestablecer Ahora</button>
+        </div>
+        <p>ó</p>
+        <a [routerLink]="['/']">
+            <p>Inicia Sesión</p>
+        </a>
+    </form>
 </div>

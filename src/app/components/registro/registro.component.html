@@ -9,31 +9,45 @@
     </h3>
     <div class="p-2 p-md-5 d-flex justify-content-center">
         <div class="col-12 col-md-6">
-            <form>
+            <form [formGroup]="registerForm" (ngSubmit)="getDataRegister()">
                 <div class="p-1">
-                    <input class="form-control" type="text" placeholder="Nombre Completo" required>
+                    <input class="form-control" type="text" placeholder="Nombre Completo" formControlName="name">
                 </div>
+                <p class="text-danger small px-2" *ngIf="checkControl('name', 'required')">Falta campo "Nombre"</p>
                 <div class="p-1">
-                    <input class="form-control" type="text" placeholder="Apellidos">
+                    <input class="form-control" type="text" placeholder="Apellidos" formControlName="lastname">
                 </div>
+                <p class="text-danger small px-2" *ngIf="checkControl('lastname', 'required')">Falta campo "Apellidos"
+                </p>
                 <div class="p-1">
-                    <input class="form-control" type="text" placeholder="Ciudad">
+                    <input class="form-control" type="text" placeholder="Ciudad" formControlName="ciudad">
                 </div>
+                <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"</p>
+
                 <div class="p-1">
                     <small>Adjuntar una Imagen de Perfil</small>
-                    <input class="form-control" type="file" placeholder="Imagen de Perfil">
+                    <input class="form-control" type="file" placeholder="Imagen de Perfil" formControlName="picture">
                 </div>
                 <div class="p-1">
-                    <input class="form-control" type="text" placeholder="Email">
+                    <input class="form-control" type="text" placeholder="Email" formControlName="email">
                 </div>
+                <p class="text-danger small px-2" *ngIf="checkControl('email', 'required')">Falta campo "Email"</p>
+
                 <div class="p-1">
-                    <input class="form-control" type="password" placeholder="Contraseña">
+                    <input class="form-control" type="password" formControlName="password">
                 </div>
+                <p class="text-danger small" *ngIf="checkControl('password', 'required')">Password es obligatorio</p>
+                <p class="text-danger small" *ngIf="checkControl('password', 'minlength')">Longitud minima de 6
+                    caracteres</p>
                 <div class="p-1">
-                    <input class="form-control" type="password" placeholder="Repite tu Contraseña">
+                    <input class="form-control" type="password" formControlName="repitePassword">
                 </div>
+                <p class="text-danger small" *ngIf="registerForm.hasError('comparepass')">Los password tiene que ser
+                    iguales</p>
+
                 <div class="form-check p-4">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                        formControlName="accept">
                     <label class="form-check-label" for="flexCheckDefault">
                         Acepto términos y condiciones <span class="text-primary" data-bs-toggle="modal"
                             data-bs-target="#terminosModal">Leer
@@ -41,7 +55,7 @@
                     </label>
                 </div>
                 <div class="p-1">
-                    <input type="button" class="btn btn-primary" value="Registrarse">
+                    <input type="submit" class="btn btn-primary" value="Registrarse">
                 </div>
             </form>
         </div>

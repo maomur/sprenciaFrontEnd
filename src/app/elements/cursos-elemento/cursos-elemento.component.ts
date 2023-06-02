@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 
 @Component({
@@ -8,19 +9,13 @@ import { CursosService } from 'src/app/services/cursos.service';
 })
 export class CursosElementoComponent {
 
-  public cursos: any = [];
+  public cursos!: Curso[];
 
   constructor(private CursosService: CursosService) { }
 
-  ngOnInit(): void {
-    this.loadData()
-  }
+  async ngOnInit() {
+    this.cursos = await this.CursosService.getAll()
 
-  public loadData() {
-    this.CursosService.getCourses('http://localhost:3330/api/courses').subscribe(data => {
-      console.log(data);
-      this.cursos = data;
-    })
   }
-
 }
+

@@ -2,15 +2,63 @@
 
 <!------------- Cursos Start ------------->
 
-<div class="container py-5">
-    <section class="">
-        <h2 class="text-center p-4">Últimos Cursos</h2>
+
+
+<div class="container">
+    <section class="row text-center container">
+        <div class="col-12 col-md-6">
+            <h2 class="fs-1 ">Últimos Cursos</h2>
+        </div>
+        <div class="col-12 col-md-6">
+
+            <!--Filtros -->
+            <div class="row text-center">
+                <div class="col-12 col-md-3"><button class="btn btn-light border border-black50 w-100 fs-6"><span><i
+                                class="bi bi-arrow-down-up"></i></span>
+                        Precio</button>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" name="" (change)="recogerCiudad($event)">
+                        <option value="" seelcted>Ciudad</option>
+                        <option value="madrid" seelcted>Madrid</option>
+                        <option value="barcelona" seelcted>Barcelona</option>
+                        <option value="sevilla" seelcted>Sevilla</option>
+                        <option value="bilbao" seelcted>Bilbao</option>
+
+
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <select class="form-select" (change)="recogerCategoria($event)">
+                        <option value="" selected>Categoría</option>
+                        <option *ngFor="let curso of cursos" [value]="curso.categoria">
+                            {{curso.categoria}}
+                        </option>
+
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <select class="form-select" (change)="recogerHorario($event)">
+                        <option value="" selected>Horario</option>
+                        <option *ngFor="let curso of lastCursos" [value]="curso.horario">{{curso.horario}}</option>
+
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="px-5 mb-3">
+            <hr class="w-100">
+        </div>
+
+
     </section>
     <section class="container my-1 px-0 px-md-2">
         <div class="card-cursos cardW">
-            <div class="card shadow border-0 cardWBox" *ngFor="let curso of cursos; let i = index">
-                <div>
-                    <img [src]="curso.foto1" class="card-img-top w-100" alt="Curso Administración de Redes Sociales">
+            <div class="card shadow border-0 cardWBox" *ngFor="let curso of lastCursos; let i = index">
+                <div class="cardBoxContent">
+                    <a href="/curso/{{curso.id}}"><img [src]="curso.foto1" class="card-img-top w-100"
+                            alt="Curso Administración de Redes Sociales"></a>
                     <div class="infoCurso">
                         <p>{{curso.fecha_inicio}}</p>
                     </div>
@@ -19,17 +67,17 @@
                         <p class="card-text">{{curso.descripcion}}</p>
                     </div>
                     <div>
-                        <a href="#" class="btn btn-primary w-100">Ver Info</a>
+                        <a href="/curso/{{curso.id}}" class="btn btn-primary w-100">Ver Info</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="text-center my-5 mx-0 mx-md-5"><button class="btn btn-dark w-25 w-md-100">Ver todos</button></div>
+    <div class="text-center my-5 mx-0 mx-md-5"><a href="/cursos">
+            <button class="btn btn-dark w-50 w-md-50">Ver
+                todos</button>
+        </a></div>
 </div>
-
-
-<app-categorias></app-categorias>
 
 <app-call-to-action></app-call-to-action>
 

@@ -27,6 +27,9 @@ import { LoginUsersComponent } from './elements/login-users/login-users.componen
 import { PoliticasComponent } from './elements/politicas/politicas.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
 import { CursosElementoComponent } from './elements/cursos-elemento/cursos-elemento.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+import { CursosCategoriaComponent } from './components/cursos-categoria/cursos-categoria.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +56,16 @@ import { CursosElementoComponent } from './elements/cursos-elemento/cursos-eleme
     LoginUsersComponent,
     PoliticasComponent,
     RecuperarClaveComponent,
-    CursosElementoComponent
+    CursosElementoComponent,
+    CrearCursoComponent,
+    CursosCategoriaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ComentariosService],
   bootstrap: [AppComponent]

@@ -9,18 +9,21 @@
                 <div class="text-center">
                     <img class="logoSprencia" src="../../../assets/img/favico.png" alt="Logo Sprencia">
                 </div>
-                <form class="px-5 py-3">
+
+                <!-- Componente Login -->
+                <form #loginForm="ngForm" (ngSubmit)="getDataLogin(loginForm)" class="px-5 py-3">
                     <div class="p-1 d-flex align-items-center">
                         <i class=" bi bi-person-circle px-1"></i>
-                        <input class="form-control" type="text" placeholder="Usuario">
+                        <input class="form-control" type="email" placeholder="Email" name="email" ngModel>
                     </div>
                     <div class="p-1 d-flex align-items-center">
                         <i class="bi bi-lock-fill px-1"></i>
-                        <input class="form-control" type="password" placeholder="Password">
+                        <input class="form-control" type="password" placeholder="Password" name="password" ngModel>
                     </div>
                     <div class="p-1 d-flex align-items-center">
                         <i class="bi bi-box-arrow-right px-1 text-light"></i>
-                        <input class="btn btn-primary w-100" type="submit" value="Iniciar Sesión">
+                        <input class="btn btn-primary w-100" type="submit" value="Iniciar Sesión"
+                            data-bs-dismiss="modal">
                     </div>
                     <div class="mt-3">
                         <div class="text-center"><a data-bs-dismiss="modal" [routerLink]="['/recuperar-clave']">¿Olvidó
@@ -32,6 +35,8 @@
                         </div>
                     </div>
                 </form>
+                <!-- Fin -->
+
             </div>
         </div>
     </div>

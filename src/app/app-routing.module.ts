@@ -10,6 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
+import { CursoComponent } from './components/curso/curso.component';
+import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+import { CursosCategoriaComponent } from './components/cursos-categoria/cursos-categoria.component';
 
 const routes: Routes = [
   // { path: "", pathMatch: 'full', redirectTo: '/home' },
@@ -23,7 +26,10 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent },
   { path: "contacto", component: ContactoComponent },
   { path: "recuperar-clave", component: RecuperarClaveComponent },
-  { path: "cursos", component: CursosComponent }
+  { path: "cursos", component: CursosComponent },
+  { path: "curso/:id", component: CursoComponent },
+  { path: "crear-curso", component: CrearCursoComponent },
+  { path: "resultado-categoria/:categoria", component: CursosCategoriaComponent }
 ];
 
 @NgModule({
