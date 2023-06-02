@@ -13,8 +13,8 @@
 
             <!--Filtros -->
             <div class="row text-center">
-                <div class="col-12 col-md-3"><button class="btn btn-light border border-black50 w-100 fs-6"><span><i
-                                class="bi bi-arrow-down-up"></i></span>
+                <div class="col-12 col-md-3"><button class="btn btn-light border border-black50 w-100 fs-6"
+                        (click)="ordenarPrecio()"><span><i class="bi bi-arrow-down-up"></i></span>
                         Precio</button>
                 </div>
                 <div class="col-md-3">
@@ -39,8 +39,9 @@
                 <div class="col-12 col-md-3">
                     <select class="form-select" (change)="recogerHorario($event)">
                         <option value="horario" selected>Horario</option>
-                        <option *ngFor="let horario of horarios" [value]="horario.horario">
+                        <option *ngFor="let horario of horarios" value="{{horario.horario}}">
                             {{horario.horario}}</option>
+
 
                     </select>
                 </div>

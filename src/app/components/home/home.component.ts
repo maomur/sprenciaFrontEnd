@@ -38,7 +38,7 @@ export class HomeComponent {
     this.cursos = await this.CursosService.getAll();
     this.categorias = await this.FiltrosService.getCategories();
     this.ciudades = await this.FiltrosService.getCities();
-    this.horarios = await this.FiltrosService.getCoursesByHorarios();
+    this.horarios = await this.FiltrosService.getHorarios()
   }
 
   async recogerCategoria($event: any) {
@@ -65,7 +65,7 @@ export class HomeComponent {
 
   async recogerHorario($event: any) {
     this.horario = $event.target.value;
-    if (this.horario = "horario") {
+    if (this.horario == "horario") {
       this.cursos = this.lastCursos
     } else {
       this.cursosHorario = await this.FiltrosService.getCoursesByHorarios(this.horario);
@@ -73,5 +73,9 @@ export class HomeComponent {
     }
   }
 
+  ordenarPrecio() {
+    console.log('PRECIO FN');
+
+  }
 
 }
