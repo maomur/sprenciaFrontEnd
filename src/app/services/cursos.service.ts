@@ -10,7 +10,6 @@ import { Curso } from '../interfaces/curso.interface';
 export class CursosService {
 
   private baseUrl: string = 'http://localhost:3330/api/courses/';
-  private cursos: Curso[] = []
 
 
   constructor(private httpClient: HttpClient) { }
@@ -38,16 +37,6 @@ export class CursosService {
   getByCategory(categoria: string): Promise<Curso[]> {
     return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + categoria))
   }
-
-
-  //TODO
-  //Obtener Categorías
-
-  //Obtener Ciudades
-
-  //Obtener Horarios
-
-  //Api ciudades de España
 
 }
 

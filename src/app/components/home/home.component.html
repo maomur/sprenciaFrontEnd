@@ -19,28 +19,28 @@
                 </div>
                 <div class="col-md-3">
                     <select class="form-select" name="" (change)="recogerCiudad($event)">
-                        <option value="" seelcted>Ciudad</option>
-                        <option value="madrid" seelcted>Madrid</option>
-                        <option value="barcelona" seelcted>Barcelona</option>
-                        <option value="sevilla" seelcted>Sevilla</option>
-                        <option value="bilbao" seelcted>Bilbao</option>
+                        <option value="ciudad">Ciudad</option>
+                        <option *ngFor="let ciudad of ciudades" [value]="ciudad.ciudad">{{ciudad.ciudad}}
+                        </option>
+
 
 
                     </select>
                 </div>
                 <div class="col-12 col-md-3">
                     <select class="form-select" (change)="recogerCategoria($event)">
-                        <option value="" selected>Categoría</option>
-                        <option *ngFor="let curso of cursos" [value]="curso.categoria">
-                            {{curso.categoria}}
+                        <option value="categoria" selected>Categorías</option>
+                        <option *ngFor="let categoria of categorias" [value]="categoria.category_name">
+                            {{categoria.category_name}}
                         </option>
 
                     </select>
                 </div>
                 <div class="col-12 col-md-3">
                     <select class="form-select" (change)="recogerHorario($event)">
-                        <option value="" selected>Horario</option>
-                        <option *ngFor="let curso of lastCursos" [value]="curso.horario">{{curso.horario}}</option>
+                        <option value="horario" selected>Horario</option>
+                        <option *ngFor="let horario of horarios" [value]="horario.horario">
+                            {{horario.horario}}</option>
 
                     </select>
                 </div>
@@ -55,7 +55,7 @@
     </section>
     <section class="container my-1 px-0 px-md-2">
         <div class="card-cursos cardW">
-            <div class="card shadow border-0 cardWBox" *ngFor="let curso of lastCursos; let i = index">
+            <div class="card shadow border-0 cardWBox" *ngFor="let curso of cursos; let i = index">
                 <div class="cardBoxContent">
                     <a href="/curso/{{curso.id}}"><img [src]="curso.foto1" class="card-img-top w-100"
                             alt="Curso Administración de Redes Sociales"></a>
