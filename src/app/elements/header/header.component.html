@@ -107,7 +107,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalBuscadorLabel">Tus Resultados</h5>
+                <h5 class="modal-title" id="modalBuscadorLabel">Tus Resultados para: <span
+                        class="text-primary fs-4">"{{termn}}"</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -121,6 +122,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <p class="mx-4 text-secondary">Número de Resultados: <span
+                        class="text-primary">{{contadorResultados}}</span></p>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>

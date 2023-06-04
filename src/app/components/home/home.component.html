@@ -4,7 +4,7 @@
 
 
 
-<div class="container">
+<div class="container pb-5">
     <section class="row text-center container">
         <div class="col-12 col-md-6">
             <h2 class="fs-1 ">Últimos Cursos</h2>
@@ -14,8 +14,8 @@
             <!--Filtros -->
             <div class="row text-center">
                 <div class="col-12 col-md-3"><button class="btn btn-light border border-black50 w-100 fs-6"
-                        (click)="ordenarPrecio()"><span><i class="bi bi-arrow-down-up"></i></span>
-                        Precio</button>
+                        (click)="ordenAlterno()">
+                        {{labelOrdenar}} €</button>
                 </div>
                 <div class="col-md-3">
                     <select class="form-select" name="" (change)="recogerCiudad($event)">
@@ -66,16 +66,18 @@
                     <div class="card-body">
                         <h5 class="card-title">{{curso.nombre}}</h5>
                         <p class="card-text">{{curso.descripcion}}</p>
+                        <h3 class="fs-4 text-end">{{curso.precio}}€</h3>
                     </div>
                     <div>
-                        <a href="/curso/{{curso.id}}" class="btn btn-primary w-100">Ver Info</a>
+                        <a href="/curso/{{curso.id}}" class="btn btn-primary w-100">Ver Info
+                            <span class="px-1"></span></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <div class="text-center my-5 mx-0 mx-md-5"><a href="/cursos">
-            <button class="btn btn-dark w-50 w-md-50">Ver
+            <button class="btn btn-primary w-50 w-md-50">Ver
                 todos</button>
         </a></div>
 </div>

@@ -4,21 +4,21 @@
 </div>
 
 <div class="py-5">
-    <!-- <section class="container-fluid">
-        <h2 class=" text-center p-4">{{miCategoria}}</h2>
-    </section> -->
+
     <section class="container my-1 px-0 px-md-2">
         <div class="card-cursos cardW">
             <div class="card shadow border-0 cardWBox" *ngFor="let curso of miCurso; let i = index">
                 <div class="cardBoxContent">
                     <a href="/curso/{{curso.id}}"><img [src]="curso.foto1" class="card-img-top w-100"
-                            alt="Curso Administración de Redes Sociales"></a>
+                            alt="{{curso.nombre}}"></a>
                     <div class="infoCurso">
                         <p>{{curso.fecha_inicio}}</p>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{curso.nombre}}</h5>
                         <p class="card-text">{{curso.descripcion}}</p>
+                        <h3 class="fs-4 text-end">{{curso.precio}}€</h3>
+
                     </div>
                     <div>
                         <a href="/curso/{{curso.id}}" class="btn btn-primary w-100">Ver Info</a>

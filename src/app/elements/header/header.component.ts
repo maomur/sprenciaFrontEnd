@@ -11,21 +11,15 @@ import { CursosService } from 'src/app/services/cursos.service';
 export class HeaderComponent {
 
   public cursos: Curso[] = []
-  termn: string = "";
+  public termn: string = "";
+  public contadorResultados: number = 0;
 
 
   constructor(private cursosService: CursosService, private router: Router, private route: ActivatedRoute) {
-
-    // this.route.params.subscribe(async params => {
-    //   let nombre = params['nombre'];
-    //   return nombre
-    // })
-
   }
 
-
   async searchWord() {
-    this.cursos = await this.cursosService.getAll()
+    this.cursos = await this.cursosService.getSearchCourses()
     this.cursos = await this.cursos.filter(item => {
       if (item.nombre.toLowerCase().includes(this.termn.toLowerCase())) {
         return true
@@ -33,6 +27,7 @@ export class HeaderComponent {
         return false
       }
     })
+    this.contadorResultados = Object.keys(this.cursos).length;
   }
 
 

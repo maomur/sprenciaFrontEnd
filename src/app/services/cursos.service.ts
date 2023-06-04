@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { last, lastValueFrom } from 'rxjs';
 import { Curso } from '../interfaces/curso.interface';
 
 
@@ -26,6 +26,11 @@ export class CursosService {
   //Obtener últimos 10 cursos
   getLastCourses(): Promise<Curso[]> {
     return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + 'lastcourses'))
+  }
+
+  //Curso para buscador
+  getSearchCourses(): Promise<Curso[]> {
+    return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + 'search'))
   }
 
   //Obtener Curso por Id

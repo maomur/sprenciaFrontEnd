@@ -28,6 +28,10 @@ export class HomeComponent {
   public cursosCiudad: Curso[] = [];
   public cursosHorario: Curso[] = []
 
+  public labelOrdenar: string = "Menor";
+
+
+
 
 
   constructor(private CursosService: CursosService, private FiltrosService: FiltrosService) {
@@ -38,7 +42,8 @@ export class HomeComponent {
     this.cursos = await this.CursosService.getAll();
     this.categorias = await this.FiltrosService.getCategories();
     this.ciudades = await this.FiltrosService.getCities();
-    this.horarios = await this.FiltrosService.getHorarios()
+    this.horarios = await this.FiltrosService.getHorarios();
+
   }
 
   async recogerCategoria($event: any) {
@@ -60,7 +65,6 @@ export class HomeComponent {
       this.cursosCiudad = await this.FiltrosService.getCoursesByCity(this.ciudad);
       this.cursos = this.cursosCiudad;
     }
-
   }
 
   async recogerHorario($event: any) {
@@ -73,9 +77,19 @@ export class HomeComponent {
     }
   }
 
-  ordenarPrecio() {
-    console.log('PRECIO FN');
-
+  ordenAlterno() {
+    if (this.labelOrdenar === "Mayor") {
+      this.cursos.sort((a, b) => a.precio - b.precio)
+      this.labelOrdenar = "Menor"
+    } else {
+      this.cursos.sort((a, b) => b.precio - a.precio);
+      this.labelOrdenar = "Mayor";
+    }
   }
+
+  ordenarPrecio() {
+    this.cursos.sort((a, b) => a.precio - b.precio)
+  }
+
 
 }
