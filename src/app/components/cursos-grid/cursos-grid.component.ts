@@ -3,11 +3,11 @@ import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 
 @Component({
-  selector: 'app-cursos-elemento',
-  templateUrl: './cursos-elemento.component.html',
-  styleUrls: ['./cursos-elemento.component.css']
+  selector: 'app-cursos-grid',
+  templateUrl: './cursos-grid.component.html',
+  styleUrls: ['./cursos-grid.component.css']
 })
-export class CursosElementoComponent {
+export class CursosGridComponent {
 
   public cursos!: Curso[];
 
@@ -18,4 +18,5 @@ export class CursosElementoComponent {
 
   }
 }
+
 
