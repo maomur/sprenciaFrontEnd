@@ -23,7 +23,7 @@ export class LoginUsersComponent {
         alert(response.error)
       } else {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/cursos'])
+        this.router.navigate(['/dashboard'])
       }
     })
   }

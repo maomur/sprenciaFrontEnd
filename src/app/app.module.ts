@@ -22,6 +22,14 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
 import { CursosCategoriaComponent } from './components/cursos-resultado/cursos-categoria.component';
 import { CursosGridComponent } from './components/cursos-grid/cursos-grid.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardMenuLateralComponent } from './components/dashboard-menu-lateral/dashboard-menu-lateral.component';
+import { DashboardListaCursosComponent } from './components/dashboard-lista-cursos/dashboard-lista-cursos.component';
+import { DashboardEditarCursoComponent } from './components/dashboard-editar-curso/dashboard-editar-curso.component';
+import { DashboardListaUsuariosComponent } from './components/dashboard-lista-usuarios/dashboard-lista-usuarios.component';
+import { DashboardEditarUsuarioComponent } from './components/dashboard-editar-usuario/dashboard-editar-usuario.component';
+import { DashboardCrearUsuarioComponent } from './components/dashboard-crear-usuario/dashboard-crear-usuario.component';
+import { DashboardListarComentariosComponent } from './components/dashboard-listar-comentarios/dashboard-listar-comentarios.component';
+import { DashboardEditarComentariosComponent } from './components/dashboard-editar-comentarios/dashboard-editar-comentarios.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +51,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CursosCategoriaComponent,
     CursosGridComponent,
     DashboardComponent,
+    DashboardMenuLateralComponent,
+    DashboardListaCursosComponent,
+    DashboardEditarCursoComponent,
+    DashboardListaUsuariosComponent,
+    DashboardEditarUsuarioComponent,
+    DashboardCrearUsuarioComponent,
+    DashboardListarComentariosComponent,
+    DashboardEditarComentariosComponent,
   ],
   imports: [
     BrowserModule,

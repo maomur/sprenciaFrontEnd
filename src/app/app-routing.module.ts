@@ -12,6 +12,7 @@ import { CursoComponent } from './components/curso/curso.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { CursosCategoriaComponent } from './components/cursos-resultado/cursos-categoria.component';
 import { CursosGridComponent } from './components/cursos-grid/cursos-grid.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: "curso/:id", component: CursoComponent },
   { path: "crear-curso", component: CrearCursoComponent },
   { path: "resultado-categoria/:categoria", component: CursosCategoriaComponent },
-  { path: 'cursos', component: CursosGridComponent }
+  { path: 'cursos', component: CursosGridComponent },
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
