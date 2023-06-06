@@ -18,7 +18,6 @@ import { LoginUsersComponent } from './components/login-users/login-users.compon
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { CursosCategoriaComponent } from './components/cursos-resultado/cursos-categoria.component';
 import { CursosGridComponent } from './components/cursos-grid/cursos-grid.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -30,6 +29,10 @@ import { DashboardEditarUsuarioComponent } from './components/dashboard-editar-u
 import { DashboardCrearUsuarioComponent } from './components/dashboard-crear-usuario/dashboard-crear-usuario.component';
 import { DashboardListarComentariosComponent } from './components/dashboard-listar-comentarios/dashboard-listar-comentarios.component';
 import { DashboardEditarComentariosComponent } from './components/dashboard-editar-comentarios/dashboard-editar-comentarios.component';
+import { DashboardNuevoCursoComponent } from './components/dashboard-nuevo-curso/dashboard-nuevo-curso.component';
+import { DashboardCrearComentarioComponent } from './components/dashboard-crear-comentario/dashboard-crear-comentario.component';
+import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,6 @@ import { DashboardEditarComentariosComponent } from './components/dashboard-edit
     LoginUsersComponent,
     PoliticasComponent,
     RecuperarClaveComponent,
-    CrearCursoComponent,
     CursosCategoriaComponent,
     CursosGridComponent,
     DashboardComponent,
@@ -59,6 +61,9 @@ import { DashboardEditarComentariosComponent } from './components/dashboard-edit
     DashboardCrearUsuarioComponent,
     DashboardListarComentariosComponent,
     DashboardEditarComentariosComponent,
+    DashboardNuevoCursoComponent,
+    DashboardCrearComentarioComponent,
+    DashboardHomeComponent,
   ],
   imports: [
     BrowserModule,

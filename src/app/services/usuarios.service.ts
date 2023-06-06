@@ -7,7 +7,6 @@ import { lastValueFrom, Observable } from 'rxjs'
     providedIn: 'root'
 })
 
-
 export class UsuarioService {
     baseUrl: string = 'http://localhost:3330/api/users/';
 

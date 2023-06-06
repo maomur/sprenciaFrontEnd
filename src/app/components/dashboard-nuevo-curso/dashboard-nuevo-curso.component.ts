@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuarios.service';
-import { CursosService } from 'src/app/services/cursos.service';
 
 @Component({
-  selector: 'app-crear-curso',
-  templateUrl: './crear-curso.component.html',
-  styleUrls: ['./crear-curso.component.css']
+  selector: 'app-dashboard-nuevo-curso',
+  templateUrl: './dashboard-nuevo-curso.component.html',
+  styleUrls: ['./dashboard-nuevo-curso.component.css']
 })
-export class CrearCursoComponent {
+export class DashboardNuevoCursoComponent {
+
 
   createForm: FormGroup;
 

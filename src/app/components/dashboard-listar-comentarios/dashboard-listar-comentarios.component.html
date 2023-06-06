@@ -1,1 +1,43 @@
-<p>dashboard-listar-comentarios works!</p>
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Listar Comentarios</span></div>
+
+<div class="container">
+    <div class="row align-items-center justify-content-center p-3">
+        <div class="col-12 col-md-4">
+            <p class="fw-bold">Comentario</p>
+        </div>
+        <div class="col-12 col-md-2">
+            <p class="fw-bold">Fecha</p>
+        </div>
+        <div class="col-12 col-md-3">
+            <p class="fw-bold">Curso</p>
+        </div>
+        <div class="col-12 col-md-2 text-center">
+            <p>
+                <span><i class="bi bi-x-square-fill fs-5 px-2 text-dark"></i></span>
+                <span><i class="bi bi-pencil-square fs-5 px-2 text-dark"></i></span>
+                <span><i class="bi bi-eye-fill fs-4 px-2 text-dark"></i></span>
+            </p>
+        </div>
+        <hr>
+        <div class="row p-1 justify-content-center align-items-center" *ngFor="let item of comentarios">
+            <div class="col-12 col-md-4">
+                <p>{{item.comentario}}</p>
+            </div>
+            <div class="col-12 col-md-2">
+                <p>{{item.fecha_comentario}}</p>
+            </div>
+            <div class="col-12 col-md-3">
+                <p>{{item.curso}}</p>
+            </div>
+            <div class="col-12 col-md-2 text-center">
+                <p>
+                    <span><i class="bi bi-x-square-fill fs-5 px-2 text-danger"></i></span>
+                    <span><i class="bi bi-pencil-square fs-5 px-2 text-warning"></i></span>
+                    <span><i class="bi bi-eye-fill fs-4 px-2 text-success"></i></span>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>

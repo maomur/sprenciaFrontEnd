@@ -1,22 +1,24 @@
 <div class="p-5 text-secondary">
     <p class="text-light text-center">ADMINISTRAR</p>
     <ul class="list-unstyled">
+        <li class="mb-3"><a class="text-decoration-none text-primary" [routerLink]="['/dashboard/home']"><span><i
+                        class="bi bi-house-door"></i></span> Inicio</a></li>
+
         <li class="text-primary"><span><i class="bi bi-file-earmark-text"></i></span> Cursos</li>
-        <li>Listar</li>
-        <li>Crear</li>
-        <li>Editar</li>
+        <li><a class="text-decoration-none text-secondary" [routerLink]="['/dashboard/listar-cursos']">Listar</a></li>
+        <li><a class="text-decoration-none text-secondary" [routerLink]="['/dashboard//nuevo-curso']">Crear</a></li>
     </ul>
     <ul class="list-unstyled">
         <li class="text-primary"><span><i class="bi bi-people-fill"></i></span> Usuarios</li>
-        <li>Listar</li>
-        <li>Crear</li>
-        <li>Editar</li>
+        <li><a class="text-decoration-none text-secondary" [routerLink]="['/dashboard/listar-usuarios']">Listar</a></li>
+        <li><a class="text-decoration-none text-secondary" [routerLink]="['/dashboard/crear-usuarios']">Crear</a></li>
     </ul>
     <ul class="list-unstyled">
         <li class="text-primary"><span><i class="bi bi-blockquote-right"></i></span> Comentarios</li>
-        <li>Listar</li>
-        <li>Crear</li>
-        <li>Editar</li>
+        <li><a class="text-decoration-none text-secondary" [routerLink]="['/dashboard/listar-comentarios']">Listar</a>
+        </li>
+        <li><a class="text-decoration-none text-secondary" [routerLink]="['/dashboard/crear-comentarios']">Crear</a>
+        </li>
     </ul>
     <div class="text-center">
         <p class="text-light"><span><i class="bi bi-box-arrow-in-left"></i></span> Cerrar Sesión</p>

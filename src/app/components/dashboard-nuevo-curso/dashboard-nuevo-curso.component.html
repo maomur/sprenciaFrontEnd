@@ -1,38 +1,40 @@
-<div class="bg-primary p-4 mb-5">
-    <h1 class="text-light text-center">Creación de Cursos</h1>
-</div>
-
-<div class="container">
-    <h2 class="fs-3">Formulario de Registro</h2>
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Nuevo Curso</span></div>
+<div class="container p-5">
     <form [formGroup]="createForm" (ngSubmit)="getDataCreate()">
         <div>
             <div class="row">
-                <div class="col-12 col-md-4 p-3">
+                <div class="col-12 col-md-8 p-3">
                     <input type="text" class="form-control" placeholder="Nombre del Curso" formControlName="nombre">
                     <p class="text-danger small px-2" *ngIf="checkControl('nombre', 'required')">Falta campo "Nombre del
                         Curso"</p>
                 </div>
-                <div class="col-12 col-md-2 p-3">
+                <div class="col-12 col-md-4 p-3">
                     <input type="number" class="form-control" placeholder="Rating" formControlName="rating">
                     <p class="text-danger small px-2" *ngIf="checkControl('rating', 'required')">Falta campo "Rating"
                     </p>
                 </div>
-                <div class="col-12 col-md-2 p-3">
+                <div class="col-12 col-md-3 p-3">
                     <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad">
                     <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"
                     </p>
                 </div>
-                <div class="col-12 col-md-2 p-3">
+                <div class="col-12 col-md-3 p-3">
                     <input type="number" class="form-control" placeholder="Precio" formControlName="precio">
                     <p class="text-danger small px-2" *ngIf="checkControl('precio', 'required')">Falta campo "Precio"
                     </p>
                 </div>
-                <div class="col-12 col-md-2 p-3">
-
-                    <select class="form-select" formControlName="estado">
-                        <option class="form-control" value="activo" default>Activo</option>
-                        <option class="form-control" value="inactivo" default>Inactivo</option>
+                <div class="col-12 col-md-3 p-3">
+                    <input type="text" class="form-control" placeholder="Categoría" formControlName="categoria">
+                </div>
+                <div class="col-12 col-md-3 p-3">
+                    <select class="form-select" formControlName="horario">
+                        <option value="" selected>Horario</option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="Fin de Semana">Fin de Semana</option>
                     </select>
+                    <p class="text-danger small px-2" *ngIf="checkControl('horario', 'required')">Falta campo "Horario"
+                    </p>
                 </div>
             </div>
             <div>
@@ -56,48 +58,40 @@
                 <p class="text-danger small px-2" *ngIf="checkControl('fecha_fin', 'required')">Falta campo "Fecha
                     Fin"</p>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" formControlName="horario">
-                        <option value="" selected>Horario</option>
-                        <option value="Mañana" selected>Mañana</option>
-                        <option value="tarde" selected>Tarde</option>
-                        <option value="Fin de Semana" selected>Fin de Semana</option>
-                    </select>
-                    <p class="text-danger small px-2" *ngIf="checkControl('horario', 'required')">Falta campo "Horario"
-                    </p>
-
-                </div>
-                <div class="col-12 col-md-3 p-3">
                     <input type="number" class="form-control" placeholder="Total Horas" formControlName="total_horas">
                 </div>
                 <p class="text-danger small px-2" *ngIf="checkControl('total_horas', 'required')">Falta campo "Total
                     Horas"</p>
-            </div>
-            <div class="text-center text-secondary">
-                <label>Adjuntar Imágenes</label>
-            </div>
-            <div class="row px-5">
-                <div class="col-12 col-md-4">
-                    <input type="file" class="form-control" placeholder="Foto 1" formControlName="foto1">
+                <div class="col-12 col-md-3 p-3">
+                    <select class="form-select" formControlName="estado">
+                        <option class="form-control" value="" default>Estado</option>
+                        <option class="form-control" value="activo" default>Activo</option>
+                        <option class="form-control" value="inactivo" default>Inactivo</option>
+                    </select>
                 </div>
-                <div class="col-12 col-md-4">
-                    <input type="file" class="form-control" placeholder="Foto 2" formControlName="foto2">
+            </div>
+            <div class="py-5">
+                <div class="text-center text-secondary mb-3">
+                    <label>Adjuntar Imágenes</label>
                 </div>
-                <div class="col-12 col-md-4">
-                    <input type="file" class="form-control" placeholder="Foto 3" formControlName="foto3">
+                <div class="row px-5">
+                    <div class="col-12 col-md-4">
+                        <input type="file" class="form-control" placeholder="Foto 1" formControlName="foto1">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <input type="file" class="form-control" placeholder="Foto 2" formControlName="foto2">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <input type="file" class="form-control" placeholder="Foto 3" formControlName="foto3">
+                    </div>
                 </div>
             </div>
             <div class="row p-5">
                 <div class="col-12 col-md-3 p-1">
-                    <input type="submit" class="btn btn-success w-100" value="Agregar Curso">
+                    <input type=" submit" class="btn btn-success w-100" value="Agregar Curso">
                 </div>
-
-
-                <div>
-                    <input type="text" class="form-control" placeholder="Categoría" formControlName="categoria">
-                </div>
-
                 <div class="col-12 col-md-3 p-1">
-                    <input type="button" class="btn btn-danger w-100" value="Cancelar">
+                    <input type="button" class="btn btn-dark w-100" value="Cancelar">
                 </div>
             </div>
         </div>

@@ -1,0 +1,23 @@
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Crear Comentario</span></div>
+<div class="container p-5">
+    <form [formGroup]="createForm" (ngSubmit)="getDataCreate()">
+        <div class="p-2">
+            <textarea class="form-control" cols="30" rows="4" placeholder="Comentario"
+                formControlName="comentario"></textarea>
+        </div>
+        <div class="p-2">
+            <select class="form-select" formControlName="curso">
+                <option value="" selected>--Seleccionar Curso--</option>
+                <option value="marketing-digital">Marketing Digital</option>
+                <option value="fotografia-profesional">Fotografía Profesional</option>
+                <option value="historia-del-arte">Historia del Arte</option>
+            </select>
+        </div>
+        <div class="row p-2">
+            <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-success" type="submit"
+                    value="Enviar Comentario">
+            </div>
+            <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-dark" type="submit" value="Cancelar"></div>
+        </div>
+    </form>
+</div>
