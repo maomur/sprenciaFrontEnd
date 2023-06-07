@@ -21,7 +21,6 @@ export class LoginUsersComponent {
     this.usuariosService.login(pForm.value).subscribe(response => {
       if (response.error) {
         alert(response.error)
-        console.log('ERROR DESDE LOGIN')
       } else {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/dashboard/home'])

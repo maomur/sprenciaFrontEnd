@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { last, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { Curso } from '../interfaces/curso.interface';
 
 
@@ -16,7 +16,9 @@ export class CursosService {
 
 
   //Crear Curso
-
+  create(pData: FormData): Promise<Curso[]> {
+    return lastValueFrom(this.httpClient.post<Curso[]>(this.baseUrl + 'create', pData))
+  }
 
   //Obtener todos los cursos
   getAll(): Promise<Curso[]> {
@@ -29,8 +31,8 @@ export class CursosService {
   }
 
   //Curso para buscador
-  getSearchCourses(): Promise<Curso[]> {
-    return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + 'search'))
+  getSearchCourses(termn: string): Promise<Curso[]> {
+    return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + 'search/' + termn))
   }
 
   //Obtener Curso por Id
@@ -41,6 +43,11 @@ export class CursosService {
   //Obtener Curso por Categorías
   getByCategory(categoria: string): Promise<Curso[]> {
     return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + categoria))
+  }
+
+  //Eliminar Curso por ID
+  deleteCoursebyId(id: number) {
+    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
   }
 
 }

@@ -19,7 +19,7 @@ export class HeaderComponent {
   }
 
   async searchWord() {
-    this.cursos = await this.cursosService.getSearchCourses()
+    this.cursos = await this.cursosService.getSearchCourses(this.termn)
     this.cursos = await this.cursos.filter(item => {
       if (item.nombre.toLowerCase().includes(this.termn.toLowerCase())) {
         return true

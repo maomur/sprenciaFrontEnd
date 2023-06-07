@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuarios.service';
+import { CursosService } from 'src/app/services/cursos.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-dashboard-nuevo-curso',
@@ -13,7 +15,7 @@ export class DashboardNuevoCursoComponent {
 
   createForm: FormGroup;
 
-  constructor(private usuariosService: UsuarioService, private router: Router) {
+  constructor(private router: Router, private cursosService: CursosService) {
 
     this.createForm = new FormGroup({
       nombre: new FormControl('', [
@@ -50,10 +52,50 @@ export class DashboardNuevoCursoComponent {
       ciudad: new FormControl('', [
         Validators.required
       ]),
-      categoria: new FormControl('', [
-
-      ])
+      categoria: new FormControl('', [])
     })
+  }
+
+
+  async getDataCreate() {
+    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, foto1, foto2, foto3, precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
+
+    console.log(this.createForm.value)
+
+    const newCourse = new FormData();
+
+    newCourse.append('nombre', nombre);
+    newCourse.append('descripcion', descripcion);
+    newCourse.append('ciudad', ciudad);
+    newCourse.append('fecha_inicio', fecha_inicio);
+    newCourse.append('fecha_fin', fecha_fin);
+    newCourse.append('foto1', foto1);
+    newCourse.append('foto2', foto2);
+    newCourse.append('foto3', foto3);
+    newCourse.append('precio', precio);
+    newCourse.append('horario', horario);
+    newCourse.append('total_horas', total_horas);
+    newCourse.append('estado', estado);
+    newCourse.append('isDelete', isDelete);
+    newCourse.append('rating', rating);
+    newCourse.append('categoria', categoria);
+
+
+    let response = await this.cursosService.create(newCourse);
+
+    if (response) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Curso creado con Éxito',
+        showConfirmButton: false,
+        timer: 4500
+      })
+      this.router.navigate(['/dashboard/home']);
+    } else {
+      console.log(response);
+    }
+
   }
 
   checkControl(controlName: string, errorName: string) {
@@ -63,27 +105,6 @@ export class DashboardNuevoCursoComponent {
       return false;
     }
   }
-
-
-  getDataCreate() { }
-
-  // getDataCreate() {
-  //   console.log(this.createForm.value);
-  //   this.CursosService.register(this.createForm.value).subscribe(response => {
-  //     console.log(response);
-
-  //     try {
-  //       if (response) {
-  //         alert('Curso creado con éxito')
-  //       } else {
-  //         alert('No hemos podido crear el curso')
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   })
-  // }
-
 
 
 }

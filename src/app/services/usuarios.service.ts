@@ -12,15 +12,22 @@ export class UsuarioService {
 
     constructor(private httpClient: HttpClient) { }
 
+
+    //Obtener todos los usuarios
+    // getAll(): Promise<Usuario[]> {
+    //     const httpOptions = {
+    //         headers: new HttpHeaders({
+    //             'Authorization': localStorage.getItem('token')!
+    //         })
+    //     }
+    //     return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl, httpOptions))
+    // }
+
     getAll(): Promise<Usuario[]> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Authorization': localStorage.getItem('token')!
-            })
-        }
-        return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl, httpOptions))
+        return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl))
     }
 
+    //Iniciar sesión
     login(pForm: any): Observable<any> {
         const httpOptions = {
             headers: new HttpHeaders({
@@ -35,6 +42,11 @@ export class UsuarioService {
         return lastValueFrom(
             this.httpClient.post<any>(this.baseUrl + 'create', pForm)
         )
+    }
+
+    //Crear usuario
+    create(pData: FormData): Promise<Usuario[]> {
+        return lastValueFrom(this.httpClient.post<Usuario[]>(this.baseUrl + 'create', pData))
     }
 
     // register(pForm: any): Observable<any> {
