@@ -41,7 +41,7 @@ export class DashboardCrearUsuarioComponent {
     newUser.append('repitepassword', repitepassword);
     newUser.append('roll', roll);
 
-    let response = await this.usuariosService.create(newUser);
+    const response = await this.usuariosService.create(newUser);
 
     if (response) {
       Swal.fire({

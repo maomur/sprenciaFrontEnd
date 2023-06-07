@@ -13,16 +13,6 @@ export class UsuarioService {
     constructor(private httpClient: HttpClient) { }
 
 
-    //Obtener todos los usuarios
-    // getAll(): Promise<Usuario[]> {
-    //     const httpOptions = {
-    //         headers: new HttpHeaders({
-    //             'Authorization': localStorage.getItem('token')!
-    //         })
-    //     }
-    //     return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl, httpOptions))
-    // }
-
     getAll(): Promise<Usuario[]> {
         return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl))
     }
@@ -38,9 +28,10 @@ export class UsuarioService {
         return this.httpClient.post<any>(this.baseUrl + 'login', pForm, httpOptions)
     }
 
+    //Registro de usuarios
     register(pForm: any): Promise<any> {
         return lastValueFrom(
-            this.httpClient.post<any>(this.baseUrl + 'create', pForm)
+            this.httpClient.post<any>(this.baseUrl + 'create/', pForm)
         )
     }
 
@@ -49,14 +40,10 @@ export class UsuarioService {
         return lastValueFrom(this.httpClient.post<Usuario[]>(this.baseUrl + 'create', pData))
     }
 
-    // register(pForm: any): Observable<any> {
-    //     const httpOptions = {
-    //         headers: new HttpHeaders({
-    //             'Content-Type': 'aplication/json'
-    //         })
-    //     }
-    //     return this.httpClient.post<any>(this.baseUrl + 'create', pForm, httpOptions)
-    // }
+    //Eliminar un usuario
+    deleteUserById(id: number) {
+        return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
+    }
 
 
 }

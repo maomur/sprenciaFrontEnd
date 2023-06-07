@@ -23,6 +23,11 @@ export class ComentariosService {
     return lastValueFrom(this.httpClient.get<Comentario[]>(this.baseUrl))
   }
 
+  //Eliminar Comentario por Id
+  deleteCommById(id: number) {
+    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
+  }
+
 
 
 }

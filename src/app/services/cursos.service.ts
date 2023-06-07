@@ -20,9 +20,13 @@ export class CursosService {
     return lastValueFrom(this.httpClient.post<Curso[]>(this.baseUrl + 'create', pData))
   }
 
-  //Obtener todos los cursos
+  //Obtener todos los cursos Límite 12
   getAll(): Promise<Curso[]> {
     return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl))
+  }
+
+  getAllUnlimited(): Promise<Curso[]> {
+    return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + "all"))
   }
 
   //Obtener últimos 10 cursos

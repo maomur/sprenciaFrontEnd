@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
 import Swal from 'sweetalert2';
@@ -81,14 +81,13 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('categoria', categoria);
 
 
-    let response = await this.cursosService.create(newCourse);
+    const response = await this.cursosService.create(newCourse);
 
     if (response) {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Curso creado con Éxito',
-        showConfirmButton: false,
+        title: 'Curso creado con éxito',
         timer: 4500
       })
       this.router.navigate(['/dashboard/home']);

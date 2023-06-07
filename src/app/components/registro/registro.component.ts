@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -63,22 +64,33 @@ export class RegistroComponent implements OnInit {
   }
 
   async getDataRegister() {
-    const { name, lastname, ciudad, picture, email, password } = this.registerForm.value;
+    const { name, lastname, ciudad, picture, email, password, repitepassword, roll } = this.registerForm.value;
+
     const newForm = new FormData();
+
     newForm.append('name', name)
     newForm.append('lastname', lastname)
     newForm.append('ciudad', ciudad)
     newForm.append('picture', picture)
     newForm.append('email', email)
     newForm.append('password', password)
+    newForm.append('repitepassword', repitepassword)
+    newForm.append('roll', roll)
 
-    const response = await this.usuariosService.register(newForm);
+    let response = await this.usuariosService.register(newForm);
     console.log(response);
 
-    if (response.insertId) {
-      console.log('DENTRO DEL IF')
+    if (response) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registro creado con Éxito',
+        showConfirmButton: false,
+        timer: 4500
+      })
+      this.router.navigate(['/']);
     } else {
-      console.log('FUERA DEL IF')
+      console.log(response);
     }
   }
 

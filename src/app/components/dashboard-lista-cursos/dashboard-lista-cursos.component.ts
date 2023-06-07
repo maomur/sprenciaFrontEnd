@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-dashboard-lista-cursos',
@@ -11,11 +12,9 @@ import { CursosService } from 'src/app/services/cursos.service';
 export class DashboardListaCursosComponent {
 
   public cursos: Curso[] = [];
-  @Output() cursoEliminado: EventEmitter<string>;
 
 
   constructor(private CursosService: CursosService) {
-    this.cursoEliminado = new EventEmitter();
   }
 
 
@@ -23,14 +22,19 @@ export class DashboardListaCursosComponent {
     this.cursos = await this.CursosService.getAll();
   }
 
+
+  //Eliminar un Curso
   async deleteCourse(id: number) {
-    console.log('ID A BORRAR', id)
     const response = await this.CursosService.deleteCoursebyId(id);
 
-    console.log(response)
     if (response.affectedRows) {
-      alert('CLIENTE BORRADO CON ÉXITO');
-      this.cursoEliminado.emit('eliminado')
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Usuario eliminado con éxito',
+        timer: 4500
+      })
+      this.cursos = await this.CursosService.getAll();
     }
   }
 
