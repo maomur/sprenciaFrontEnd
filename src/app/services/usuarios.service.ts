@@ -36,8 +36,15 @@ export class UsuarioService {
     }
 
     //Crear usuario
-    create(pData: FormData): Promise<Usuario[]> {
-        return lastValueFrom(this.httpClient.post<Usuario[]>(this.baseUrl + 'create', pData))
+    create(pData: FormData): Promise<any> {
+        const httpOptions = {
+            headers: new HttpHeaders(
+                {
+                    authorization: localStorage.getItem('token')!
+                }
+            )
+        }
+        return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData, httpOptions))
     }
 
     //Eliminar un usuario

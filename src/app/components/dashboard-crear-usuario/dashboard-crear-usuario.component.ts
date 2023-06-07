@@ -27,21 +27,10 @@ export class DashboardCrearUsuarioComponent {
     })
   }
 
-  async getDataCreate() {
-    const { name, lastname, ciudad, picture, email, password, repitepassword, roll } = this.createForm.value;
+  async onSubmit() {
 
-    const newUser = new FormData();
 
-    newUser.append('name', name);
-    newUser.append('lastname', lastname);
-    newUser.append('ciudad', ciudad);
-    newUser.append('picture', picture);
-    newUser.append('email', email);
-    newUser.append('password', password);
-    newUser.append('repitepassword', repitepassword);
-    newUser.append('roll', roll);
-
-    const response = await this.usuariosService.create(newUser);
+    const response = await this.usuariosService.create(this.createForm.value);
 
     if (response) {
       Swal.fire({

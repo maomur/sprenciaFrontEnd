@@ -16,8 +16,8 @@ export class CursosService {
 
 
   //Crear Curso
-  create(pData: FormData): Promise<Curso[]> {
-    return lastValueFrom(this.httpClient.post<Curso[]>(this.baseUrl + 'create', pData))
+  create(pData: any): Promise<any> {
+    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData))
   }
 
   //Obtener todos los cursos Límite 12

@@ -1,6 +1,6 @@
 <div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Nuevo Curso</span></div>
 <div class="container p-5">
-    <form [formGroup]="createForm" (ngSubmit)="getDataCreate()">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <div>
             <div class="row">
                 <div class="col-12 col-md-8 p-3">
@@ -70,7 +70,7 @@
                     </select>
                 </div>
             </div>
-            <div class="py-5">
+            <!-- <div class="py-5">
                 <div class="text-center text-secondary mb-3">
                     <label>Adjuntar Imágenes</label>
                 </div>
@@ -85,7 +85,7 @@
                         <input type="file" class="form-control" placeholder="Foto 3" formControlName="foto3">
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row p-5">
                 <div class="col-12 col-md-3 p-1">
                     <input type="submit" class="btn btn-success w-100" value="Agregar Curso">

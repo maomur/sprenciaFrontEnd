@@ -57,9 +57,10 @@ export class DashboardNuevoCursoComponent {
   }
 
 
-  async getDataCreate() {
-    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, foto1, foto2, foto3, precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
+  async onSubmit() {
+    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, /*foto1, foto2, foto3,*/ precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
 
+    console.log('NOMBRE', nombre)
     console.log(this.createForm.value)
 
     const newCourse = new FormData();
@@ -69,9 +70,9 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('ciudad', ciudad);
     newCourse.append('fecha_inicio', fecha_inicio);
     newCourse.append('fecha_fin', fecha_fin);
-    newCourse.append('foto1', foto1);
-    newCourse.append('foto2', foto2);
-    newCourse.append('foto3', foto3);
+    // newCourse.append('foto1', foto1);
+    // newCourse.append('foto2', foto2);
+    // newCourse.append('foto3', foto3);
     newCourse.append('precio', precio);
     newCourse.append('horario', horario);
     newCourse.append('total_horas', total_horas);
@@ -82,6 +83,8 @@ export class DashboardNuevoCursoComponent {
 
 
     const response = await this.cursosService.create(newCourse);
+    console.log('NEW COURSE', newCourse);
+    console.log(response)
 
     if (response) {
       Swal.fire({
