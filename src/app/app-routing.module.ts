@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'listar-cursos', component: DashboardListaCursosComponent },
       { path: 'editar-curso', component: DashboardEditarCursoComponent },
       { path: 'nuevo-curso', component: DashboardNuevoCursoComponent },
-      { path: 'editar-curso', component: DashboardEditarCursoComponent },
+      { path: 'editar-curso/:id', component: DashboardEditarCursoComponent },
       { path: 'listar-usuarios', component: DashboardListaUsuariosComponent },
       { path: 'crear-usuarios', component: DashboardCrearUsuarioComponent },
       { path: 'editar-usuarios', component: DashboardEditarUsuarioComponent },
@@ -53,7 +53,7 @@ const routes: Routes = [
       { path: 'editar-comentarios', component: DashboardEditarComentariosComponent },
       { path: 'home', component: DashboardHomeComponent },
       { path: 'detalle-curso/:id', component: DashboardDetalleCursoComponent },
-      { path: 'detalle-usuario/:id', component: DashboardDetalleUsuarioComponent }
+      { path: 'detalle-usuario/:id', component: DashboardDetalleUsuarioComponent },
     ]
   },
 ];

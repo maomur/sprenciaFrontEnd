@@ -60,9 +60,6 @@ export class DashboardNuevoCursoComponent {
   async onSubmit() {
     const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, /*foto1, foto2, foto3,*/ precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
 
-    console.log('NOMBRE', nombre)
-    console.log(this.createForm.value)
-
     const newCourse = new FormData();
 
     newCourse.append('nombre', nombre);
@@ -81,19 +78,19 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('rating', rating);
     newCourse.append('categoria', categoria);
 
-
-    let response = await this.cursosService.create(newCourse);
     console.log('NEW COURSE', newCourse);
-    console.log(response)
 
-    if (response) {
+    const response = await this.cursosService.create(newCourse);
+
+
+    if (response.affected) {
       Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Curso creado con éxito',
         timer: 4500
       })
-      this.router.navigate(['/dashboard/home']);
+      this.router.navigate(['/dashboard/listar-cursos']);
     } else {
       console.log(response);
     }

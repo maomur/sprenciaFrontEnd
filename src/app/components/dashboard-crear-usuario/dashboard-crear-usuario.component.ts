@@ -32,7 +32,7 @@ export class DashboardCrearUsuarioComponent {
 
     const response = await this.usuariosService.create(this.createForm.value);
 
-    if (response) {
+    if (response.affected) {
       Swal.fire({
         position: 'center',
         icon: 'success',
