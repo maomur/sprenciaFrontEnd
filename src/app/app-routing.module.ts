@@ -22,6 +22,8 @@ import { DashboardListarComentariosComponent } from './components/dashboard-list
 import { DashboardEditarComentariosComponent } from './components/dashboard-editar-comentarios/dashboard-editar-comentarios.component';
 import { DashboardCrearComentarioComponent } from './components/dashboard-crear-comentario/dashboard-crear-comentario.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
+import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-curso/dashboard-detalle-curso.component';
+import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
 
 
 const routes: Routes = [
@@ -49,7 +51,9 @@ const routes: Routes = [
       { path: 'listar-comentarios', component: DashboardListarComentariosComponent },
       { path: 'crear-comentarios', component: DashboardCrearComentarioComponent },
       { path: 'editar-comentarios', component: DashboardEditarComentariosComponent },
-      { path: 'home', component: DashboardHomeComponent }
+      { path: 'home', component: DashboardHomeComponent },
+      { path: 'detalle-curso/:id', component: DashboardDetalleCursoComponent },
+      { path: 'detalle-usuario/:id', component: DashboardDetalleUsuarioComponent }
     ]
   },
 ];

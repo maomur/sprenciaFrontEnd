@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,7 @@ export class DashboardListaCursosComponent {
   public cursos: Curso[] = [];
 
 
-  constructor(private CursosService: CursosService) {
+  constructor(private CursosService: CursosService, private router: Router, private route: ActivatedRoute) {
   }
 
 
@@ -26,7 +27,6 @@ export class DashboardListaCursosComponent {
   //Eliminar un Curso
   async deleteCourse(id: number) {
     const response = await this.CursosService.deleteCoursebyId(id);
-
     if (response.affectedRows) {
       Swal.fire({
         position: 'center',

@@ -12,6 +12,7 @@ export class DashboardListaUsuariosComponent {
 
   public usuarios: Usuario[] = [];
 
+
   constructor(private UsuariosService: UsuarioService) { }
 
   async ngOnInit() {

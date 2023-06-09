@@ -32,6 +32,8 @@ import { DashboardEditarComentariosComponent } from './components/dashboard-edit
 import { DashboardNuevoCursoComponent } from './components/dashboard-nuevo-curso/dashboard-nuevo-curso.component';
 import { DashboardCrearComentarioComponent } from './components/dashboard-crear-comentario/dashboard-crear-comentario.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
+import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-curso/dashboard-detalle-curso.component';
+import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
     DashboardNuevoCursoComponent,
     DashboardCrearComentarioComponent,
     DashboardHomeComponent,
+    DashboardDetalleCursoComponent,
+    DashboardDetalleUsuarioComponent,
   ],
   imports: [
     BrowserModule,

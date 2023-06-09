@@ -39,9 +39,7 @@ export class UsuarioService {
     create(pData: FormData): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders(
-                {
-                    authorization: localStorage.getItem('token')!
-                }
+                { authorization: localStorage.getItem('token')! }
             )
         }
         return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData, httpOptions))
@@ -52,6 +50,9 @@ export class UsuarioService {
         return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
     }
 
-
+    //Obtener un usuario por ID
+    getUserById(id: number): Promise<any> {
+        return lastValueFrom(this.httpClient.get<any>(this.baseUrl + id))
+    }
 }
 

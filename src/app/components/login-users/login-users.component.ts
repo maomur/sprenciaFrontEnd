@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-users',
@@ -19,8 +20,14 @@ export class LoginUsersComponent {
 
   getDataLogin(pForm: any) {
     this.usuariosService.login(pForm.value).subscribe(response => {
+
       if (response.error) {
-        alert(response.error)
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Error en usuario ó contraseña',
+          timer: 4500
+        })
       } else {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/dashboard/home'])

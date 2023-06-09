@@ -28,6 +28,16 @@ export class ComentariosService {
     return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
   }
 
+  //Ver comentario por ID
+  getById(id: number): Promise<any[]> {
+    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + id))
+  }
+
+  //Ver comentario por Curso
+  getCommentByCursoId(idCurso: number): Promise<any> {
+    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'curso/' + idCurso))
+  }
+
 
 
 }

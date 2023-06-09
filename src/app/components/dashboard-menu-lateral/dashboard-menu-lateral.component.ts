@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class DashboardMenuLateralComponent {
 
+  logout() {
+    console.log('CERRAR SESIÓN')
+  }
+
 }

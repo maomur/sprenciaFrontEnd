@@ -1,0 +1,45 @@
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Detalle Usuario</span></div>
+<div class="container">
+    <div class="row p-5">
+        <div class="col-12 col-md-8">
+            <div class="p-2">
+                <small class="text-secondary">Nombre Completo</small>
+                <p class="fs-4 p-0 m-0">{{usuario?.name}}</p>
+            </div>
+            <div class="p-2">
+                <small class="text-secondary">Apellido</small>
+                <p class="fs-4 p-0 m-0">{{usuario?.lastname}}</p>
+            </div>
+            <div class="p-2">
+                <small class="text-secondary">Ciudad</small>
+                <p class="fs-4 p-0 m-0">{{usuario?.ciudad}}</p>
+            </div>
+            <div class="p-2">
+                <small class="text-secondary">Email</small>
+                <p class="fs-4 p-0 m-0">{{usuario?.email}}</p>
+            </div>
+            <div class="p-2">
+                <small class="text-secondary">Roll</small>
+                <p class="fs-4 p-0 m-0">{{usuario?.roll}}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div>
+                <img src="../../../assets/img/sprencia-comentario.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="d-flex justify-content-center mb-5">
+            <div class="px-1">
+                <button class="btn btn-primary" (click)=" goBack()">Retroceder</button>
+            </div>
+            <div class="px-1">
+                <button class="btn btn-danger" (click)=" deleteUser(usuario?.id)">Eliminar</button>
+            </div>
+            <div class="px-1">
+                <button class="btn btn-warning" (click)=" goBack()">Editar</button>
+            </div>
+        </div>
+    </div>

@@ -82,7 +82,7 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('categoria', categoria);
 
 
-    const response = await this.cursosService.create(newCourse);
+    let response = await this.cursosService.create(newCourse);
     console.log('NEW COURSE', newCourse);
     console.log(response)
 
