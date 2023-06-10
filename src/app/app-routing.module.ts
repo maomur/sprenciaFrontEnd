@@ -47,7 +47,7 @@ const routes: Routes = [
       { path: 'editar-curso/:id', component: DashboardEditarCursoComponent },
       { path: 'listar-usuarios', component: DashboardListaUsuariosComponent },
       { path: 'crear-usuarios', component: DashboardCrearUsuarioComponent },
-      { path: 'editar-usuarios', component: DashboardEditarUsuarioComponent },
+      { path: 'editar-usuario/:id', component: DashboardEditarUsuarioComponent },
       { path: 'listar-comentarios', component: DashboardListarComentariosComponent },
       { path: 'crear-comentarios', component: DashboardCrearComentarioComponent },
       { path: 'editar-comentarios', component: DashboardEditarComentariosComponent },

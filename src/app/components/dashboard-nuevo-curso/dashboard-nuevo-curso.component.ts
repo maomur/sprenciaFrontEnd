@@ -57,8 +57,8 @@ export class DashboardNuevoCursoComponent {
   }
 
 
-  async onSubmit() {
-    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, /*foto1, foto2, foto3,*/ precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
+  async getDataCreate() {
+    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, foto1, foto2, foto3, precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
 
     const newCourse = new FormData();
 
@@ -67,9 +67,9 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('ciudad', ciudad);
     newCourse.append('fecha_inicio', fecha_inicio);
     newCourse.append('fecha_fin', fecha_fin);
-    // newCourse.append('foto1', foto1);
-    // newCourse.append('foto2', foto2);
-    // newCourse.append('foto3', foto3);
+    newCourse.append('foto1', foto1);
+    newCourse.append('foto2', foto2);
+    newCourse.append('foto3', foto3);
     newCourse.append('precio', precio);
     newCourse.append('horario', horario);
     newCourse.append('total_horas', total_horas);
@@ -78,19 +78,19 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('rating', rating);
     newCourse.append('categoria', categoria);
 
-    console.log('NEW COURSE', newCourse);
+
+    console.log('esto es newCourse, HOLA', newCourse);
 
     const response = await this.cursosService.create(newCourse);
 
-
-    if (response.affected) {
+    if (response) {
       Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Curso creado con éxito',
         timer: 4500
       })
-      this.router.navigate(['/dashboard/listar-cursos']);
+      this.router.navigate(['/dashboard/home']);
     } else {
       console.log(response);
     }
@@ -104,6 +104,7 @@ export class DashboardNuevoCursoComponent {
       return false;
     }
   }
+
 
 
 }

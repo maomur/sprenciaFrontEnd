@@ -1,1 +1,50 @@
-<p>dashboard-editar-usuario works!</p>
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Crear Usuario</span></div>
+<div class="container p-5">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="name"
+                    [value]="miUsuario?.name">
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="text" placeholder="Apellidos" formControlName="lastname"
+                    [value]="miUsuario?.lastname">
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="text" placeholder="Ciudad" formControlName="ciudad"
+                    [value]="miUsuario?.ciudad">
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="text" placeholder="Email" formControlName="email"
+                    [value]="miUsuario?.email">
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="password" placeholder="Password" formControlName="password"
+                    [value]="miUsuario?.password">
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="password" placeholder="Repite Password"
+                    formControlName="repitepassword" [value]="miUsuario?.password">
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <select class="form-select text-secondary" formControlName="roll">
+                    <option value="">--Seleccionar Roll--</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-4 p-2">
+                <input class="form-control" type="file" formControlName="picture" name="picture">
+                <small class="text-secondary" for="picture">Imagen de Perfil</small>
+            </div>
+            <div class="row">
+                <div class="p-2 col-12 col-md-3">
+                    <input type="submit" class="btn btn-success w-100" value="Guardar Usuario">
+                </div>
+                <div class="p-2 col-12 col-md-3">
+                    <input type="button" class="btn btn-dark w-100" value="Cancelar">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -54,5 +54,10 @@ export class UsuarioService {
     getUserById(id: number): Promise<any> {
         return lastValueFrom(this.httpClient.get<any>(this.baseUrl + id))
     }
+
+    //Actualizar un usuario por Id
+    updateUserById(id: number): Promise<any> {
+        return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update/', id))
+    }
 }
 

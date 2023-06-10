@@ -4,65 +4,70 @@
         <div>
             <div class="row">
                 <div class="col-12 col-md-8 p-3">
-                    <input type="text" class="form-control" placeholder="Nombre del Curso" formControlName="nombre">
-                    <!-- <p class="text-danger small px-2" *ngIf="checkControl('nombre', 'required')">Falta campo "Nombre del
-                        Curso"</p> -->
+                    <input type="text" class="form-control" name="nombre" [value]="miCurso?.nombre">
+                    <p class="text-danger small px-2" *ngIf="checkControl('nombre', 'required')">Falta campo "Nombre del
+                        Curso"</p>
                 </div>
                 <div class="col-12 col-md-4 p-3">
-                    <input type="number" class="form-control" placeholder="Rating" formControlName="rating">
-                    <!-- <p class="text-danger small px-2" *ngIf="checkControl('rating', 'required')">Falta campo "Rating"
-                    </p> -->
+                    <input type="number" class="form-control" placeholder="Rating" name="rating"
+                        [value]="miCurso?.rating">
+                    <p class="text-danger small px-2" *ngIf="checkControl('rating', 'required')">Falta campo "Rating"
+                    </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad">
-                    <!-- <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"
-                    </p> -->
+                    <input type="text" class="form-control" placeholder="Ciudad" name="ciudad"
+                        [value]="miCurso?.ciudad">
+                    <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"
+                    </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <input type="number" class="form-control" placeholder="Precio" formControlName="precio">
-                    <!-- <p class="text-danger small px-2" *ngIf="checkControl('precio', 'required')">Falta campo "Precio"
-                    </p> -->
+                    <input type="number" class="form-control" placeholder="Precio" name="precio"
+                        [value]="miCurso?.precio">
+                    <p class="text-danger small px-2" *ngIf="checkControl('precio', 'required')">Falta campo "Precio"
+                    </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <input type="text" class="form-control" placeholder="Categoría" formControlName="categoria">
+                    <input type="text" class="form-control" placeholder="Categoría" name="categoria"
+                        [value]="miCurso?.categoria">
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" formControlName="horario">
+                    <select class="form-select" name="horario" [value]="miCurso?.horario">
                         <option value="" selected>Horario</option>
                         <option value="Mañana">Mañana</option>
                         <option value="tarde">Tarde</option>
                         <option value="Fin de Semana">Fin de Semana</option>
                     </select>
-                    <!-- <p class="text-danger small px-2" *ngIf="checkControl('horario', 'required')">Falta campo "Horario"
-                    </p> -->
+                    <p class="text-danger small px-2" *ngIf="checkControl('horario', 'required')">Falta campo "Horario"
+                    </p>
                 </div>
             </div>
             <div>
-                <textarea class="form-control" rows="5" placeholder="Descripción"
-                    formControlName="descripcion"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Descripción" name="descripcion"
+                    [value]="miCurso?.descripcion"></textarea>
             </div>
-            <!-- <p class="text-danger small px-2" *ngIf="checkControl('descripcion', 'required')">Falta campo "Descripción
-                del Curso"</p> -->
+            <p class="text-danger small px-2" *ngIf="checkControl('descripcion', 'required')">Falta campo "Descripción
+                del Curso"</p>
             <div class="row align-items-end">
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_inicio">Fecha Inicio</label>
-                    <input type="date" class="form-control" formControlName="fecha_inicio">
+                    <input type="date" class="form-control" name="fecha_inicio" [value]="miCurso?.fecha_inicio">
                 </div>
-                <!-- <p class="text-danger small px-2" *ngIf="checkControl('fecha_inicio', 'required')">Falta campo "Fecha
-                    Inicio"</p> -->
+                <p class="text-danger small px-2" *ngIf="checkControl('fecha_inicio', 'required')">Falta campo "Fecha
+                    Inicio"</p>
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_fin">Fecha Inicio</label>
-                    <input type="date" class="form-control" formControlName="fecha_fin">
+                    <input type="date" class="form-control" name="fecha_fin" [value]="miCurso?.fecha_fin">
                 </div>
-                <!-- <p class="text-danger small px-2" *ngIf="checkControl('fecha_fin', 'required')">Falta campo "Fecha
-                    Fin"</p> -->
+                <p class="text-danger small px-2" *ngIf="checkControl('fecha_fin', 'required')">Falta campo "Fecha
+                    Fin"</p>
                 <div class="col-12 col-md-3 p-3">
-                    <input type="number" class="form-control" placeholder="Total Horas" formControlName="total_horas">
+                    <input type="number" class="form-control" placeholder="Total Horas" name="total_horas"
+                        [value]="miCurso?.total_horas">
                 </div>
-                <!-- <p class="text-danger small px-2" *ngIf="checkControl('total_horas', 'required')">Falta campo "Total
-                    Horas"</p> -->
+                <p class="text-danger small px-2" *ngIf="checkControl('total_horas', 'required')">Falta campo "Total
+                    Horas"</p>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" formControlName="estado">
+                    <select class="form-select" name="estado" [value]="miCurso?.estado">
                         <option class="form-control" value="" default>Estado</option>
                         <option class="form-control" value="activo" default>Activo</option>
                         <option class="form-control" value="inactivo" default>Inactivo</option>
@@ -75,13 +80,13 @@
                 </div>
                 <div class="row px-5">
                     <div class="col-12 col-md-4">
-                        <input type="file" class="form-control" placeholder="Foto 1" formControlName="foto1">
+                        <input type="file" class="form-control" placeholder="Foto 1" name="foto1">
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="file" class="form-control" placeholder="Foto 2" formControlName="foto2">
+                        <input type="file" class="form-control" placeholder="Foto 2" name="foto2">
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="file" class="form-control" placeholder="Foto 3" formControlName="foto3">
+                        <input type="file" class="form-control" placeholder="Foto 3" name="foto3">
                     </div>
                 </div>
             </div>

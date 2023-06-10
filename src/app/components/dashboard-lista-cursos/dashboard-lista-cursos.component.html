@@ -33,7 +33,8 @@
                 <p>
                     <span><a (click)="deleteCourse(curso.id)" class="cursorPointer"><i
                                 class="bi bi-x-square-fill fs-5 px-2 text-danger"></i></a></span>
-                    <span><i class="bi bi-pencil-square fs-5 px-2 text-warning"></i></span>
+                    <span><a [routerLink]="['/dashboard/editar-curso/' + curso.id]"><i
+                                class="bi bi-pencil-square fs-5 px-2 text-warning cursorPointer"></i></a></span>
                     <span><a [routerLink]="['/dashboard/detalle-curso/'+ curso.id]"><i
                                 class="bi bi-eye-fill fs-4 px-2 text-success"></i></a></span>
                 </p>
