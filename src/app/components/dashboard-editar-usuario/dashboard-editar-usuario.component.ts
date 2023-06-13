@@ -18,7 +18,6 @@ export class DashboardEditarUsuarioComponent {
 
 
   ngOnInit() {
-    console.log('ONINIT USUARIO');
     this.route.params.subscribe(async params => {
       let id = parseInt(params['id']);
       this.miUsuario = await this.UsuariosService.getUserById(id)

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { FormularioCursoComponent } from './components/formulario-curso/formulario-curso.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
@@ -24,12 +23,12 @@ import { DashboardCrearComentarioComponent } from './components/dashboard-crear-
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-curso/dashboard-detalle-curso.component';
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
+import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "sobre-nosotros", component: SobreNosotrosComponent },
-  { path: "formulario-curso", component: FormularioCursoComponent },
   { path: "usuarios", component: UsuariosComponent },
   { path: "perfil", component: PerfilComponent },
   { path: "registro", component: RegistroComponent },
@@ -39,7 +38,7 @@ const routes: Routes = [
   { path: "resultado-categoria/:categoria", component: CursosCategoriaComponent },
   { path: 'cursos', component: CursosGridComponent },
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard],
     children: [
       { path: 'listar-cursos', component: DashboardListaCursosComponent },
       { path: 'editar-curso', component: DashboardEditarCursoComponent },
@@ -50,10 +49,11 @@ const routes: Routes = [
       { path: 'editar-usuario/:id', component: DashboardEditarUsuarioComponent },
       { path: 'listar-comentarios', component: DashboardListarComentariosComponent },
       { path: 'crear-comentarios', component: DashboardCrearComentarioComponent },
-      { path: 'editar-comentarios', component: DashboardEditarComentariosComponent },
+      { path: 'editar-comentario/:id', component: DashboardEditarComentariosComponent },
       { path: 'home', component: DashboardHomeComponent },
       { path: 'detalle-curso/:id', component: DashboardDetalleCursoComponent },
       { path: 'detalle-usuario/:id', component: DashboardDetalleUsuarioComponent },
+      { path: '**', redirectTo: 'home' }
     ]
   },
 ];

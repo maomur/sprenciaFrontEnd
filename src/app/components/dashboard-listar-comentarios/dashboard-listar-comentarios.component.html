@@ -32,7 +32,8 @@
                 <p>
                     <span><a (click)="deleteComm(item.id)"><i
                                 class="bi bi-x-square-fill fs-5 px-2 text-danger cursorPointer"></i></a></span>
-                    <span><i class="bi bi-pencil-square fs-5 px-2 text-warning cursorPointer"></i></span>
+                    <a [routerLink]="['/dashboard/editar-comentario/' + item.id]"><span><i
+                                class="bi bi-pencil-square fs-5 px-2 text-warning cursorPointer"></i></span></a>
                 </p>
             </div>
         </div>

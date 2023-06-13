@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Curso } from 'src/app/interfaces/curso.interface';
 import { ComentariosService } from 'src/app/services/comentarios.service';
+import { CursosService } from 'src/app/services/cursos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,9 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class DashboardCrearComentarioComponent {
 
+  public cursos: Curso[] = [];
+
   createForm: FormGroup;
 
-  constructor(private comentariosService: ComentariosService, private router: Router) {
+  constructor(private comentariosService: ComentariosService, private router: Router, private CursosService: CursosService) {
 
     this.createForm = new FormGroup({
       comentario: new FormControl('', []),
@@ -21,6 +25,10 @@ export class DashboardCrearComentarioComponent {
       curso: new FormControl()
     })
 
+  }
+
+  async ngOnInit() {
+    this.cursos = await this.CursosService.getAll()
   }
 
   async getDataCreate() {

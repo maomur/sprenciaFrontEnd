@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Comentario } from '../interfaces/comentario.interface';
@@ -36,6 +36,16 @@ export class ComentariosService {
   //Ver comentario por Curso
   getCommentByCursoId(idCurso: number): Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'curso/' + idCurso))
+  }
+
+  //Editar comentario
+  editCommentById(idComentario: number) {
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update/' + idComentario, httpOptions))
   }
 
 

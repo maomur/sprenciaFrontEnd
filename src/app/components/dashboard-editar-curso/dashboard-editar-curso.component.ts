@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Curso } from 'src/app/interfaces/curso.interface';
@@ -10,19 +10,11 @@ import Swal from 'sweetalert2';
   templateUrl: './dashboard-editar-curso.component.html',
   styleUrls: ['./dashboard-editar-curso.component.css']
 })
-export class DashboardEditarCursoComponent {
+export class DashboardEditarCursoComponent implements OnInit {
 
   public miCurso: Curso | any;
 
   createForm: FormGroup;
-
-  ngOnInit() {
-    console.log('ONINIT RUN')
-    this.route.params.subscribe(async params => {
-      let id = parseInt(params['id']);
-      this.miCurso = await this.CursosService.getById(id);
-    })
-  }
 
   constructor(private router: Router, private CursosService: CursosService, private route: ActivatedRoute) {
 
@@ -66,7 +58,16 @@ export class DashboardEditarCursoComponent {
 
   }
 
+  ngOnInit(): void {
+    this.route.params.subscribe(async (params) => {
+      let id = parseInt(params['id']);
+      this.miCurso = await this.CursosService.getById(id);
+    });
+  }
+
   async onSubmit() {
+
+
     const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, /*foto1, foto2, foto3,*/ precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
 
     const newCourse = new FormData();
@@ -104,6 +105,8 @@ export class DashboardEditarCursoComponent {
       console.log(response);
     }
 
+
+
   }
 
   checkControl(controlName: string, errorName: string) {
@@ -113,7 +116,4 @@ export class DashboardEditarCursoComponent {
       return false;
     }
   }
-
-
-
 }

@@ -13,6 +13,7 @@ export class DashboardCrearUsuarioComponent {
 
   createForm: FormGroup;
 
+
   constructor(private usuariosService: UsuarioService, private router: Router) {
 
     this.createForm = new FormGroup({
@@ -32,7 +33,7 @@ export class DashboardCrearUsuarioComponent {
 
     const response = await this.usuariosService.create(this.createForm.value);
 
-    if (response.affected) {
+    if (response) {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -40,7 +41,7 @@ export class DashboardCrearUsuarioComponent {
         showConfirmButton: false,
         timer: 4500
       })
-      this.router.navigate(['/dashboard/home']);
+      this.router.navigate(['/dashboard/listar-usuarios']);
     } else {
       console.log(response);
     }

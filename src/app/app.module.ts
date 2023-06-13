@@ -6,7 +6,6 @@ import { CursoComponent } from './components/curso/curso.component';
 import { HomeComponent } from './components/home/home.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { FormularioCursoComponent } from './components/formulario-curso/formulario-curso.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
@@ -34,6 +33,12 @@ import { DashboardCrearComentarioComponent } from './components/dashboard-crear-
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-curso/dashboard-detalle-curso.component';
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
+import { LoginGuard } from './guards/login.guard';
+import { Routes } from '@angular/router';
+
+const routes: Routes = [
+
+]
 
 
 @NgModule({
@@ -43,7 +48,6 @@ import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle
     HomeComponent,
     SobreNosotrosComponent,
     PerfilComponent,
-    FormularioCursoComponent,
     UsuariosComponent,
     RegistroComponent,
     ContactoComponent,
@@ -76,7 +80,7 @@ import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [ComentariosService],
+  providers: [ComentariosService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

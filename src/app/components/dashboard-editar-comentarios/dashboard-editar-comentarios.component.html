@@ -1,1 +1,23 @@
-<p>dashboard-editar-comentarios works!</p>
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Editar Comentario</span></div>
+<div class="container p-5">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div class="p-2">
+            <textarea class="form-control" cols="30" rows="4" name="comentario"
+                [value]="miComentario?.comentario"></textarea>
+        </div>
+        <div class="p-2">
+            <select class="form-select" formControlName="curso" [value]="miComentario?.curso">
+                <option value="" selected>--Seleccionar Curso--</option>
+                <option [ngValue]="'marketing-digital'">Marketing Digital</option>
+                <option [ngValue]="'fotografia-profesional'">Fotografía Profesional</option>
+                <option [ngValue]="'historia-del-arte'">Historia del Arte</option>
+            </select>
+        </div>
+        <div class="row p-2">
+            <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-success" type="submit" value="Actualizar">
+            </div>
+            <div class="p-2 col-12 col-md-3"><a [routerLink]="['/dashboard/listar-comentarios']"><input
+                        class="w-100 btn btn-dark" type="submit" value="Cancelar"></a></div>
+        </div>
+    </form>
+</div>

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { last, lastValueFrom } from 'rxjs';
 import { Curso } from '../interfaces/curso.interface';
 
 
@@ -25,6 +25,7 @@ export class CursosService {
     return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl))
   }
 
+  //Obtener todos los cursos
   getAllUnlimited(): Promise<Curso[]> {
     return lastValueFrom(this.httpClient.get<Curso[]>(this.baseUrl + "all"))
   }
@@ -51,7 +52,22 @@ export class CursosService {
 
   //Eliminar Curso por ID
   deleteCoursebyId(id: number) {
-    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id, httpOptions))
+  }
+
+  //Actualizar un Curso por ID
+  updateCourseById(pData: FormData): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update', pData, httpOptions))
   }
 
 }

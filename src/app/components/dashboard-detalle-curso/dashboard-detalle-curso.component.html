@@ -56,7 +56,7 @@
             <button class="btn btn-danger" (click)=" deleteCourse(miCurso?.id)">Eliminar</button>
         </div>
         <div class="px-1">
-            <button class="btn btn-warning" (click)=" goBack()">Editar</button>
+            <button class="btn btn-warning" [routerLink]="['/dashboard/editar-curso/' + miCurso?.id]">Editar</button>
         </div>
     </div>
 </div>

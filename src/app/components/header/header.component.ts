@@ -1,5 +1,7 @@
+
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginGuard } from 'src/app/guards/login.guard';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 
@@ -15,7 +17,7 @@ export class HeaderComponent {
   public contadorResultados: number = 0;
 
 
-  constructor(private cursosService: CursosService, private router: Router, private route: ActivatedRoute) {
+  constructor(private cursosService: CursosService, private router: Router, private route: ActivatedRoute, public authService: LoginGuard) {
   }
 
   async searchWord() {
@@ -28,6 +30,15 @@ export class HeaderComponent {
       }
     })
     this.contadorResultados = Object.keys(this.cursos).length;
+  }
+
+  isLoggedIn() {
+    this.authService.isLoggedIn()
+  }
+
+  logOut() {
+    this.authService.logout();
+    this.router.navigate(['/'])
   }
 
 

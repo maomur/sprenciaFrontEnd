@@ -1,6 +1,6 @@
 <div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Nuevo Curso</span></div>
 <div class="container p-5">
-    <form [formGroup]="createForm" (ngSubmit)="getDataCreate()">
+    <form [formGroup]="createF" (ngSubmit)="getDataCreate()">
         <div>
             <div class="row">
                 <div class="col-12 col-md-8 p-3">
@@ -9,12 +9,17 @@
                         Curso"</p>
                 </div>
                 <div class="col-12 col-md-4 p-3">
-                    <input type="number" class="form-control" placeholder="Rating" formControlName="rating">
+                    <input type="number" class="form-control" placeholder="Rating" formControlName="rating" step="1"
+                        max="10" min="0">
                     <p class="text-danger small px-2" *ngIf="checkControl('rating', 'required')">Falta campo "Rating"
                     </p>
                 </div>
+
                 <div class="col-12 col-md-3 p-3">
-                    <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad">
+                    <select class="form-select text-secondary" formControlName="ciudad">
+                        <option value="">-- Ciudad --</option>
+                        <option *ngFor="let ciudad of ciudades" value="{{ciudad?.ciudad}}">{{ciudad?.ciudad}}</option>
+                    </select>
                     <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"
                     </p>
                 </div>
@@ -24,10 +29,14 @@
                     </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <input type="text" class="form-control" placeholder="Categoría" formControlName="categoria">
+                    <select class="form-select text-secondary" formControlName="categoria">
+                        <option value="">-- Categoría --</option>
+                        <option *ngFor="let categoria of categorias" value="{{categoria?.category_name}}">
+                            {{categoria?.category_name}}</option>
+                    </select>
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" formControlName="horario">
+                    <select class="form-select text-secondary" formControlName="horario">
                         <option value="" selected>Horario</option>
                         <option value="Mañana">Mañana</option>
                         <option value="tarde">Tarde</option>
@@ -46,14 +55,14 @@
             <div class="row align-items-end">
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_inicio">Fecha Inicio</label>
-                    <input type="date" class="form-control" formControlName="fecha_inicio">
+                    <input type="date" class="form-control text-secondary" formControlName="fecha_inicio">
                 </div>
                 <p class="text-danger small px-2" *ngIf="checkControl('fecha_inicio', 'required')">Falta campo "Fecha
                     Inicio"</p>
 
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_fin">Fecha Inicio</label>
-                    <input type="date" class="form-control" formControlName="fecha_fin">
+                    <input type="date" class="form-control text-secondary" formControlName="fecha_fin">
                 </div>
                 <p class="text-danger small px-2" *ngIf="checkControl('fecha_fin', 'required')">Falta campo "Fecha
                     Fin"</p>
@@ -63,7 +72,7 @@
                 <p class="text-danger small px-2" *ngIf="checkControl('total_horas', 'required')">Falta campo "Total
                     Horas"</p>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" formControlName="estado">
+                    <select class="form-select text-secondary" formControlName="estado">
                         <option class="form-control" value="" default>Estado</option>
                         <option class="form-control" value="activo" default>Activo</option>
                         <option class="form-control" value="inactivo" default>Inactivo</option>
@@ -91,7 +100,8 @@
                     <input type="submit" class="btn btn-success w-100" value="Agregar Curso">
                 </div>
                 <div class="col-12 col-md-3 p-1">
-                    <input type="button" class="btn btn-dark w-100" value="Cancelar">
+                    <a [routerLink]="['/dashboard/listar-cursos']"><input type="button" class="btn btn-dark w-100"
+                            value="Cancelar"></a>
                 </div>
             </div>
         </div>

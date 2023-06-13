@@ -81,9 +81,14 @@
                         <li class="nav-item px-2">
                             <a class="nav-link" routerLink="active" [routerLink]="['/contacto']">Contacto</a>
                         </li>
-                        <li class="nav-item bg-primary" px-2 data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <li *ngIf="!authService.isLoggedIn()" class="nav-item bg-primary" px-2 data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
                             <a class="nav-link text-light cursorPointer"><span><i class="bi bi-person-circle"> </i>
                                 </span> ACCESO</a>
+                        </li>
+                        <li *ngIf="authService.isLoggedIn()" (click)="logOut()" class="nav-item bg-primary" px-2>
+                            <a class="nav-link text-light cursorPointer"><span><i class="bi bi-box-arrow-left"> </i>
+                                </span> Cerrar Sesión</a>
                         </li>
                     </ul>
                     <form class="d-flex">

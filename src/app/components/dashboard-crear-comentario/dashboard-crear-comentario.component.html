@@ -6,18 +6,18 @@
                 formControlName="comentario"></textarea>
         </div>
         <div class="p-2">
-            <select class="form-select" formControlName="curso">
-                <option value="" selected>--Seleccionar Curso--</option>
-                <option value="marketing-digital">Marketing Digital</option>
-                <option value="fotografia-profesional">Fotografía Profesional</option>
-                <option value="historia-del-arte">Historia del Arte</option>
+            <select class="form-select text-secondary" formControlName="curso">
+                <option value="">-- Curso --</option>
+                <option *ngFor="let curso of cursos" value="{{curso?.nombre}}">
+                    {{curso?.nombre}}</option>
             </select>
         </div>
         <div class="row p-2">
             <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-success" type="submit"
                     value="Enviar Comentario">
             </div>
-            <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-dark" type="submit" value="Cancelar"></div>
+            <div class="p-2 col-12 col-md-3"><a [routerLink]="['/dashboard/listar-comentarios']"><input
+                        class="w-100 btn btn-dark" type="butt" value="Cancelar"></a></div>
         </div>
     </form>
 </div>

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Curso } from 'src/app/interfaces/curso.interface';
+import { CategoriasService } from 'src/app/services/categorias.service';
+import { CiudadesService } from 'src/app/services/ciudades.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import Swal from 'sweetalert2';
 
@@ -12,12 +15,28 @@ import Swal from 'sweetalert2';
 })
 export class DashboardNuevoCursoComponent {
 
+  public lastCursos!: Curso[];
+  public curso!: string;
+  public cursos: Curso[] = [];
 
-  createForm: FormGroup;
+  public categoria!: string;
+  public categorias: any[] = [];
 
-  constructor(private router: Router, private cursosService: CursosService) {
+  public ciudad!: string;
+  public ciudades: any[] = [];
 
-    this.createForm = new FormGroup({
+  public horario!: string;
+  public horarios: any[] = [];
+
+  public cursosCategoria: Curso[] = [];
+  public cursosCiudad: Curso[] = [];
+  public cursosHorario: Curso[] = []
+
+  createF!: FormGroup;
+
+  constructor(private router: Router, private cursosService: CursosService, private CategoriasService: CategoriasService, private CiudadesService: CiudadesService) {
+
+    this.createF = new FormGroup({
       nombre: new FormControl('', [
         Validators.required
       ]),
@@ -56,11 +75,18 @@ export class DashboardNuevoCursoComponent {
     })
   }
 
+  async ngOnInit() {
+    this.categorias = await this.CategoriasService.getAll();
+    this.ciudades = await this.CiudadesService.getAll()
+
+  }
+
 
   async getDataCreate() {
-    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, foto1, foto2, foto3, precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
+    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, foto1, foto2, foto3, precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createF.value;
 
     const newCourse = new FormData();
+    console.log(newCourse)
 
     newCourse.append('nombre', nombre);
     newCourse.append('descripcion', descripcion);
@@ -78,9 +104,6 @@ export class DashboardNuevoCursoComponent {
     newCourse.append('rating', rating);
     newCourse.append('categoria', categoria);
 
-
-    console.log('esto es newCourse, HOLA', newCourse);
-
     const response = await this.cursosService.create(newCourse);
 
     if (response) {
@@ -90,15 +113,17 @@ export class DashboardNuevoCursoComponent {
         title: 'Curso creado con éxito',
         timer: 4500
       })
-      this.router.navigate(['/dashboard/home']);
+      this.router.navigate(['/dashboard/listar-cursos']);
+      console.log(response)
     } else {
       console.log(response);
+      this.router.navigate(['/dashboard/']);
     }
 
   }
 
   checkControl(controlName: string, errorName: string) {
-    if (this.createForm.get(controlName)?.hasError(errorName) && this.createForm.get(controlName)?.touched) {
+    if (this.createF.get(controlName)?.hasError(errorName) && this.createF.get(controlName)?.touched) {
       return true;
     } else {
       return false;
