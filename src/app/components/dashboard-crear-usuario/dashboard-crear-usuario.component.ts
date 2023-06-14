@@ -30,10 +30,9 @@ export class DashboardCrearUsuarioComponent {
 
   async onSubmit() {
 
+    let resultado = await this.usuariosService.create(this.createForm.value);
 
-    const response = await this.usuariosService.create(this.createForm.value);
-
-    if (response) {
+    if (resultado.affectedRows) {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -43,8 +42,16 @@ export class DashboardCrearUsuarioComponent {
       })
       this.router.navigate(['/dashboard/listar-usuarios']);
     } else {
-      console.log(response);
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'ERROR: No se ha agregado ningún usuario',
+        showConfirmButton: false,
+        timer: 4500
+      })
+      console.log(resultado)
     }
+
 
   }
 

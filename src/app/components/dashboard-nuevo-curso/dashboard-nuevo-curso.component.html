@@ -1,13 +1,16 @@
 <div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Nuevo Curso</span></div>
 <div class="container p-5">
-    <form [formGroup]="createF" (ngSubmit)="getDataCreate()">
+    <form [formGroup]="createForm" (ngSubmit)="getDataCreate()">
         <div>
             <div class="row">
                 <div class="col-12 col-md-8 p-3">
                     <input type="text" class="form-control" placeholder="Nombre del Curso" formControlName="nombre">
                     <p class="text-danger small px-2" *ngIf="checkControl('nombre', 'required')">Falta campo "Nombre del
                         Curso"</p>
+                    <p class="text-danger small px-2" *ngIf="checkControl('nombre', 'minlength')">Mínimo 20 caracteres"
+                    </p>
                 </div>
+
                 <div class="col-12 col-md-4 p-3">
                     <input type="number" class="form-control" placeholder="Rating" formControlName="rating" step="1"
                         max="10" min="0">
@@ -52,6 +55,8 @@
             </div>
             <p class="text-danger small px-2" *ngIf="checkControl('descripcion', 'required')">Falta campo "Descripción
                 del Curso"</p>
+            <p class="text-danger small px-2" *ngIf="checkControl('descripcion', 'minlength')">Mínimo 20 caracteres"
+            </p>
             <div class="row align-items-end">
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_inicio">Fecha Inicio</label>
@@ -97,7 +102,8 @@
             </div>
             <div class="row p-5">
                 <div class="col-12 col-md-3 p-1">
-                    <input type="submit" class="btn btn-success w-100" value="Agregar Curso">
+                    <input [disabled]="!createForm.valid" type="submit" class="btn btn-success w-100"
+                        value="Agregar Curso">
                 </div>
                 <div class="col-12 col-md-3 p-1">
                     <a [routerLink]="['/dashboard/listar-cursos']"><input type="button" class="btn btn-dark w-100"

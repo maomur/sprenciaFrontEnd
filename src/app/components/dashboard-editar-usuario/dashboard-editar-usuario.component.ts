@@ -39,8 +39,16 @@ export class DashboardEditarUsuarioComponent {
   }
 
   async onSubmit() {
+    //AQUÍ?
+    this.route.params.subscribe(async params => {
+      let id = parseInt(params['id']);
+      this.miUsuario = await this.UsuariosService.getUserById(id)
+      console.log(this.miUsuario)
+    })
 
-    const response = await this.UsuariosService.create(this.createForm.value);
+
+    const response = await this.UsuariosService.updateUserById(this.miUsuario);
+    console.log(response)
 
     if (response.affected) {
       Swal.fire({

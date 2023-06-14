@@ -14,7 +14,13 @@ export class UsuarioService {
 
 
     getAll(): Promise<Usuario[]> {
-        return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl))
+
+        const httpOptions = {
+            headers: new HttpHeaders(
+                { authorization: localStorage.getItem('token')! }
+            )
+        }
+        return lastValueFrom(this.httpClient.get<Usuario[]>(this.baseUrl, httpOptions))
     }
 
     //Iniciar sesión
@@ -57,7 +63,12 @@ export class UsuarioService {
 
     //Actualizar un usuario por Id
     updateUserById(id: number): Promise<any> {
-        return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update/', id))
+        const httpOptions = {
+            headers: new HttpHeaders(
+                { authorization: localStorage.getItem('token')! }
+            )
+        }
+        return lastValueFrom(this.httpClient.put<any>(this.baseUrl + 'update/' + id, httpOptions))
     }
 }
 

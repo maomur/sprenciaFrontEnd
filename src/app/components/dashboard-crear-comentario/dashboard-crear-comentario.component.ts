@@ -32,21 +32,10 @@ export class DashboardCrearComentarioComponent {
   }
 
   async getDataCreate() {
-    const { comentario, fecha_comentario, estado, usuario, isDelete, curso, curso_id } = this.createForm.value;
 
-    const newComment = new FormData();
-
-    newComment.append('comentario', comentario);
-    newComment.append('fecha_comentario', fecha_comentario);
-    newComment.append('estado', estado);
-    newComment.append('usuario', usuario);
-    newComment.append('isDelete', isDelete);
-    newComment.append('curso', curso);
-    newComment.append('curso_id', curso_id);
-
-    let resultado = await this.comentariosService.create(newComment);
-
-    if (resultado) {
+    let resultado = await this.comentariosService.create(this.createForm.value);
+    console.log(resultado)
+    if (resultado.affectedRows) {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -56,10 +45,23 @@ export class DashboardCrearComentarioComponent {
       })
       this.router.navigate(['/dashboard/home'])
     } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'ERROR: No se ha agregado ningún comentario',
+        showConfirmButton: false,
+        timer: 4500
+      })
       console.log(resultado)
     }
+  }
 
-
+  checkControl(controlName: string, errorName: string) {
+    if (this.createForm.get(controlName)?.hasError(errorName) && this.createForm.get(controlName)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

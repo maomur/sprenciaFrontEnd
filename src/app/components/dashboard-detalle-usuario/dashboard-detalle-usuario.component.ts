@@ -37,6 +37,7 @@ export class DashboardDetalleUsuarioComponent {
         timer: 4500
       })
       this.usuarios = await this.UsuariosService.getAll();
+      this.router.navigate(['/dashboard/listar-usuarios'])
     }
   }
 

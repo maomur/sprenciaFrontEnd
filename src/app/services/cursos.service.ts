@@ -16,8 +16,13 @@ export class CursosService {
 
 
   //Crear Curso
-  create(pData: any): Promise<any> {
-    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData))
+  create(pData: FormData): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData, httpOptions))
   }
 
   //Obtener todos los cursos Límite 12
@@ -64,7 +69,9 @@ export class CursosService {
   updateCourseById(pData: FormData): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders(
-        { authorization: localStorage.getItem('token')! }
+        {
+          authorization: localStorage.getItem('token')!,
+        }
       )
     }
     return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update', pData, httpOptions))

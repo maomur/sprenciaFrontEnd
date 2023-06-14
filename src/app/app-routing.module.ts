@@ -24,6 +24,7 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
 import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-curso/dashboard-detalle-curso.component';
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
 import { LoginGuard } from './guards/login.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: "resultado-categoria/:categoria", component: CursosCategoriaComponent },
   { path: 'cursos', component: CursosGridComponent },
   {
-    path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard],
+    path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard, AdminGuard],
     children: [
       { path: 'listar-cursos', component: DashboardListaCursosComponent },
       { path: 'editar-curso', component: DashboardEditarCursoComponent },

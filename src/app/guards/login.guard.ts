@@ -38,6 +38,7 @@ export class LoginGuard implements CanActivate {
       timer: 4500
     })
     localStorage.removeItem('token');
+    localStorage.removeItem('roll');
   }
 
 
@@ -50,16 +51,6 @@ export class LoginGuard implements CanActivate {
     return true;
   }
 
-  //Verificar Administrador
-  // isAdmin() {
-  //   let roll: string | null = localStorage.getItem('roll');
-
-  //   if (roll === 'admin') {
-  //     return true;
-  //   }
-  //   this.router.navigate([''])
-  //   return false;
-  // }
 
 
 

@@ -6,11 +6,9 @@
                 [value]="miComentario?.comentario"></textarea>
         </div>
         <div class="p-2">
-            <select class="form-select" formControlName="curso" [value]="miComentario?.curso">
-                <option value="" selected>--Seleccionar Curso--</option>
-                <option [ngValue]="'marketing-digital'">Marketing Digital</option>
-                <option [ngValue]="'fotografia-profesional'">Fotografía Profesional</option>
-                <option [ngValue]="'historia-del-arte'">Historia del Arte</option>
+            <select class="form-select" formControlName="curso">
+                <option class="fw-bold text-primary" value="" selected>{{miComentario?.curso}}</option>
+                <option *ngFor="let curso of cursos" value="{{curso?.nombre}}">{{curso?.nombre}}</option>
             </select>
         </div>
         <div class="row p-2">

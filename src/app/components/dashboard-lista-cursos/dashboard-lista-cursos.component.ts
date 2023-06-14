@@ -20,7 +20,7 @@ export class DashboardListaCursosComponent {
 
 
   async ngOnInit() {
-    this.cursos = await this.CursosService.getAll();
+    this.cursos = await this.CursosService.getAllUnlimited();
   }
 
 
@@ -34,7 +34,7 @@ export class DashboardListaCursosComponent {
         title: 'Usuario eliminado con éxito',
         timer: 4500
       })
-      this.cursos = await this.CursosService.getAll();
+      this.cursos = await this.CursosService.getAllUnlimited();
     }
   }
 

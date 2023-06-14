@@ -30,6 +30,7 @@ export class LoginUsersComponent {
         })
       } else {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('roll', response.roll);
         this.router.navigate(['/dashboard/home'])
       }
     })

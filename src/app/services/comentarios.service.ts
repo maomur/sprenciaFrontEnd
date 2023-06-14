@@ -13,9 +13,14 @@ export class ComentariosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  //Crear Curso
+  //Crear Comentario
   create(pData: FormData): Promise<any> {
-    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData))
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'create', pData, httpOptions))
   }
 
   //Obtener todos los Comentarios
