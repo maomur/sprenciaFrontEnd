@@ -4,22 +4,62 @@
         <div class="row">
             <div class="col-12 col-md-4 p-2">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="name">
+                <p class="text-danger small px-2" *ngIf="checkControl('name', 'required')">Falta campo "Nombre"
+                </p>
+                <p class="text-danger small px-2" *ngIf="checkControl('name', 'minlength')">Mínimo 2 caracteres"
+                </p>
             </div>
             <div class="col-12 col-md-4 p-2">
                 <input class="form-control" type="text" placeholder="Apellidos" formControlName="lastname">
+                <p class="text-danger small px-2" *ngIf="checkControl('lastname', 'required')">Falta campo "Apellidos"
+                </p>
+                <p class="text-danger small px-2" *ngIf="checkControl('lastname', 'minlength')">Mínimo 2 caracteres"
+                </p>
             </div>
+
             <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="text" placeholder="Ciudad" formControlName="ciudad">
+                <select class="form-select text-secondary" formControlName="ciudad">
+                    <option value="">-- Ciudad --</option>
+                    <option *ngFor="let ciudad of ciudades" value="{{ciudad?.ciudad}}">{{ciudad?.ciudad}}</option>
+                </select>
+                <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"
+                </p>
+                <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'minlength')">Mínimo 2 caracteres"
+                </p>
             </div>
+
             <div class="col-12 col-md-4 p-2">
                 <input class="form-control" type="text" placeholder="Email" formControlName="email">
+                <p class="text-danger small px-2" *ngIf="checkControl('email', 'required')">Falta campo "Email"
+                </p>
+                <p class="text-danger small px-2" *ngIf="checkControl('email', 'minlength')">Mínimo 2 caracteres"
+                </p>
+                <p class="text-danger small px-2" *ngIf="checkControl('email', 'pattern')">Email no válido"
+                </p>
             </div>
             <div class="col-12 col-md-4 p-2">
                 <input class="form-control" type="password" placeholder="Password" formControlName="password">
+                <p class="text-danger small px-2" *ngIf="checkControl('password', 'required')">Falta campo "Password"
+                </p>
+                <p class="text-danger small px-2" *ngIf="checkControl('password', 'minlength')">Mínimo 2 caracteres"
+                </p>
             </div>
             <div class="col-12 col-md-4 p-2">
                 <input class="form-control" type="password" placeholder="Repite Password"
                     formControlName="repitepassword">
+                <div class="d-flex">
+                    <p class="text-danger small px-2" *ngIf="checkControl('repitepassword', 'required')">Falta campo
+                        "Repite
+                        Password"
+                    </p>
+                    <p class="text-danger small px-2" *ngIf="checkControl('repitepassword', 'minlength')">Mínimo 2
+                        caracteres"
+                    </p>
+                    <p *ngIf="createForm.hasError('passwordcompare') &&
+                    createForm.get('repitepassword')?.touched">
+                        <small class="text-danger">Las contraseñas no coinciden.</small>
+                    </p>
+                </div>
             </div>
             <div class="col-12 col-md-4 p-2">
                 <select class="form-select text-secondary" formControlName="roll">
@@ -27,6 +67,8 @@
                     <option value="cliente">Cliente</option>
                     <option value="admin">Administrador</option>
                 </select>
+                <p class="text-danger small px-2" *ngIf="checkControl('roll', 'required')">Falta campo "Roll"
+                </p>
             </div>
             <div class="col-12 col-md-4 p-2">
                 <input class="form-control" type="file" formControlName="picture" name="picture">
@@ -34,7 +76,8 @@
             </div>
             <div class="row">
                 <div class="p-2 col-12 col-md-3">
-                    <input type="submit" class="btn btn-success w-100" value="Guardar Usuario">
+                    <input [disabled]="!createForm.valid" type="submit" class="btn btn-success w-100"
+                        value="Guardar Usuario">
                 </div>
                 <div class="p-2 col-12 col-md-3">
                     <a [routerLink]="['/dashboard/listar-usuarios']"><input type="button" class="btn btn-dark w-100"

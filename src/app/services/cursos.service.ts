@@ -66,15 +66,14 @@ export class CursosService {
   }
 
   //Actualizar un Curso por ID
-  updateCourseById(pData: FormData): Promise<any> {
+  updateCourseById(pData: any): Promise<any> {
     const httpOptions = {
-      headers: new HttpHeaders(
-        {
-          authorization: localStorage.getItem('token')!,
-        }
-      )
-    }
-    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update', pData, httpOptions))
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!,
+      })
+    };
+
+    return lastValueFrom(this.httpClient.put<any>(this.baseUrl + 'update/' + pData.id, pData, httpOptions));
   }
 
 }

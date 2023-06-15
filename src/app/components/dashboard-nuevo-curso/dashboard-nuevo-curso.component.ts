@@ -95,6 +95,7 @@ export class DashboardNuevoCursoComponent {
         position: 'center',
         icon: 'success',
         title: 'Curso creado con éxito',
+        showConfirmButton: false,
         timer: 4500
       })
       this.router.navigate(['/dashboard/listar-cursos']);
@@ -103,7 +104,7 @@ export class DashboardNuevoCursoComponent {
         position: 'center',
         icon: 'warning',
         title: 'ERROR: No se ha agregado ningún curso',
-        text: `${resultado}`,
+        showConfirmButton: false,
         timer: 4500,
       })
     }

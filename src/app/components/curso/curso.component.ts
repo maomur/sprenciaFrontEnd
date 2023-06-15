@@ -23,8 +23,6 @@ export class CursoComponent implements OnInit {
       let id = parseInt(params['id']);
       this.miCurso = await this.CursosService.getById(id);
       this.opiniones = await this.ComentarioService.getCommentByCursoId(id);
-      console.log('OPINIONES', this.opiniones)
-
     })
 
 

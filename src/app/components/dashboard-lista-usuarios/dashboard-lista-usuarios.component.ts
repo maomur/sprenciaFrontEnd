@@ -29,6 +29,7 @@ export class DashboardListaUsuariosComponent {
         position: 'center',
         icon: 'warning',
         title: 'Usuario eliminado con éxito',
+        showConfirmButton: false,
         timer: 4500
       })
       this.usuarios = await this.UsuariosService.getAll();

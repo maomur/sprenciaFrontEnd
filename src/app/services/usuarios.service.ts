@@ -12,7 +12,7 @@ export class UsuarioService {
 
     constructor(private httpClient: HttpClient) { }
 
-
+    //Obtener todos los usuarios
     getAll(): Promise<Usuario[]> {
 
         const httpOptions = {
@@ -53,7 +53,12 @@ export class UsuarioService {
 
     //Eliminar un usuario
     deleteUserById(id: number) {
-        return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
+        const httpOptions = {
+            headers: new HttpHeaders(
+                { authorization: localStorage.getItem('token')! }
+            )
+        }
+        return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id, httpOptions))
     }
 
     //Obtener un usuario por ID

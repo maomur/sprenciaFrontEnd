@@ -14,7 +14,7 @@ export class CursosGridComponent {
   constructor(private CursosService: CursosService) { }
 
   async ngOnInit() {
-    this.cursos = await this.CursosService.getAll()
+    this.cursos = await this.CursosService.getAllUnlimited()
 
   }
 }

@@ -25,12 +25,22 @@ export class ComentariosService {
 
   //Obtener todos los Comentarios
   getAll(): Promise<Comentario[]> {
-    return lastValueFrom(this.httpClient.get<Comentario[]>(this.baseUrl))
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.get<Comentario[]>(this.baseUrl, httpOptions))
   }
 
   //Eliminar Comentario por Id
   deleteCommById(id: number) {
-    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id))
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { authorization: localStorage.getItem('token')! }
+      )
+    }
+    return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'delete/' + id, httpOptions))
   }
 
   //Ver comentario por ID

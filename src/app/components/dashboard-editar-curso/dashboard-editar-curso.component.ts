@@ -16,19 +16,18 @@ export class DashboardEditarCursoComponent implements OnInit {
 
   createForm: FormGroup;
 
-  constructor(private router: Router, private CursosService: CursosService, private route: ActivatedRoute) {
+  constructor(private router: Router, private cursosService: CursosService, private route: ActivatedRoute) {
 
     this.createForm = new FormGroup({
       nombre: new FormControl('', [
-        Validators.required
+        Validators.required, Validators.minLength(10)
       ]),
       descripcion: new FormControl('', [
+        Validators.required, Validators.minLength(10)
+      ]),
+      fecha_inicio: new FormControl('', [
         Validators.required
       ]),
-      fecha_inicio: new FormControl('',
-        [
-          Validators.required
-        ]),
       fecha_fin: new FormControl('', [
         Validators.required
       ]),
@@ -53,67 +52,72 @@ export class DashboardEditarCursoComponent implements OnInit {
       ciudad: new FormControl('', [
         Validators.required
       ]),
-      categoria: new FormControl('', [])
+      categoria: new FormControl('', [
+        Validators.required
+      ])
     })
 
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(async (params) => {
+    //Obtenemos el ID
+    this.route.params.subscribe(async params => {
       let id = parseInt(params['id']);
-      this.miCurso = await this.CursosService.getById(id);
-    });
+      //Obtengo Curso por Id
+      this.miCurso = await this.cursosService.getById(id);
+      //Si existe Id 
+      if (params['id']) {
+        const miCurso = await this.cursosService.getById(id);
+        console.log(miCurso);
+        this.createForm = new FormGroup({
+          id: new FormControl(miCurso?.id, []),
+          nombre: new FormControl(miCurso?.nombre, []),
+          descripcion: new FormControl(miCurso?.descripcion, []),
+          ciudad: new FormControl(miCurso?.ciudad, []),
+          fecha_inicio: new FormControl(miCurso?.fecha_inicio, []),
+          fecha_fin: new FormControl(miCurso?.fecha_fin, []),
+          foto1: new FormControl(miCurso?.foto1, []),
+          foto2: new FormControl(miCurso?.foto2, []),
+          foto3: new FormControl(miCurso?.foto3, []),
+          precio: new FormControl(miCurso?.precio, []),
+          horario: new FormControl(miCurso?.horario, []),
+          total_horas: new FormControl(miCurso?.total_horas, []),
+          estado: new FormControl(miCurso?.estado, []),
+          isDelete: new FormControl(miCurso?.isDelete, []),
+          rating: new FormControl(miCurso?.rating, []),
+          categoria: new FormControl(miCurso?.categoria, [])
+        })
+      }
+    }
+    )
   }
 
   async onSubmit() {
 
-
-    const { nombre, descripcion, ciudad, fecha_inicio, fecha_fin, /*foto1, foto2, foto3,*/ precio, horario, total_horas, estado, isDelete, rating, categoria } = this.createForm.value;
-
-    const newCourse = new FormData();
-
-    newCourse.append('nombre', nombre);
-    newCourse.append('descripcion', descripcion);
-    newCourse.append('ciudad', ciudad);
-    newCourse.append('fecha_inicio', fecha_inicio);
-    newCourse.append('fecha_fin', fecha_fin);
-    // newCourse.append('foto1', foto1);
-    // newCourse.append('foto2', foto2);
-    // newCourse.append('foto3', foto3);
-    newCourse.append('precio', precio);
-    newCourse.append('horario', horario);
-    newCourse.append('total_horas', total_horas);
-    newCourse.append('estado', estado);
-    newCourse.append('isDelete', isDelete);
-    newCourse.append('rating', rating);
-    newCourse.append('categoria', categoria);
+    if (this.createForm.value.id) {
+      console.log(this.createForm)
+      console.log(this.createForm.value.id)
 
 
-    const response = await this.CursosService.create(newCourse);
+      const response = await this.cursosService.updateCourseById(this.createForm.value);
 
-    console.log('NEW COURSE', newCourse);
+      console.log('RESPONSE', response);
 
-    if (response.affected) {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Curso creado con éxito',
-        timer: 4500
-      })
-      this.router.navigate(['/dashboard/listar-cursos']);
-    } else {
-      console.log(response);
+      if (response.affectedRows) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Curso actualizado con éxito',
+          timer: 4500
+        });
+        this.router.navigate(['/dashboard/listar-cursos']);
+      } else {
+        console.log(response);
+      }
     }
-
-
-
   }
 
   checkControl(controlName: string, errorName: string) {
-    if (this.createForm.get(controlName)?.hasError(errorName) && this.createForm.get(controlName)?.touched) {
-      return true;
-    } else {
-      return false;
-    }
+
   }
 }
