@@ -118,6 +118,12 @@ export class DashboardEditarCursoComponent implements OnInit {
   }
 
   checkControl(controlName: string, errorName: string) {
-
+    if (this.createForm.get(controlName)?.hasError(errorName) && this.createForm.get(controlName)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
   }
+
+
 }

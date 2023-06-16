@@ -1,24 +1,42 @@
-import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+// import { Injectable } from '@angular/core';
+// import {
+//   HttpRequest,
+//   HttpHandler,
+//   HttpEvent,
+//   HttpInterceptor,
+// } from '@angular/common/http';
+// import { Observable, throwError } from 'rxjs';
+// import { catchError } from 'rxjs/operators';
+// import { LoginGuard } from '../guards/login.guard';
 
-@Injectable()
-export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) { }
+// @Injectable()
+// export class AuthInterceptor implements HttpInterceptor {
+//   constructor(private authService: LoginGuard) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request).pipe(
-      catchError((error: any) => {
-        if (error instanceof HttpErrorResponse && error.status === 401) {
-          // Token expirado, eliminarlo y redireccionar al formulario de inicio de sesión
-          localStorage.removeItem('token');
-          this.router.navigate(['/login']);
-        }
-        return throwError(error);
-      })
-    );
-  }
-}
+//   intercept(
+//     request: HttpRequest<any>,
+//     next: HttpHandler
+//   ): Observable<HttpEvent<any>> {
+//     // Clona la solicitud original y agrega el encabezado de autorización si el token está presente
+//     const token = this.authService.canActivate()
+//     if (token) {
+//       request = request.clone({
+//         setHeaders: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       });
+//     }
+
+//     return next.handle(request).pipe(
+//       catchError((error) => {
+   
+//         if (error.status === 401) {
+//           this.authService.logout();
+//         }
+
+//         return throwError(error);
+//       })
+//     );
+//   }
+// }

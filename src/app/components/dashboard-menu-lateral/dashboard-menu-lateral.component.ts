@@ -12,6 +12,10 @@ export class DashboardMenuLateralComponent {
 
   constructor(private router: Router, private authService: LoginGuard) { }
 
+  ngDoCheck() {
+    this.authService.checkExpiration();
+  }
+
 
   logout() {
     this.authService.logout();

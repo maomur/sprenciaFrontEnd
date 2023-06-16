@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginGuard } from 'src/app/guards/login.guard';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  constructor(private LoginGuard: LoginGuard) { }
+
 }
+

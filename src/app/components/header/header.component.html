@@ -86,9 +86,14 @@
                             <a class="nav-link text-light cursorPointer"><span><i class="bi bi-person-circle"> </i>
                                 </span> ACCESO</a>
                         </li>
-                        <li *ngIf="authService.isLoggedIn()" (click)="logOut()" class="nav-item bg-primary" px-2>
+                        <li *ngIf="authService.isLoggedIn()" (click)="logOut()" class="nav-item bg-primary mx-2">
                             <a class="nav-link text-light cursorPointer"><span><i class="bi bi-box-arrow-left"> </i>
                                 </span> Cerrar Sesión</a>
+                        </li>
+                        <li *ngIf="authService.isLoggedIn()" class="nav-item bg-primary mx-2">
+                            <a [routerLink]="['/dashboard/home']" class="nav-link text-light cursorPointer"><span><i
+                                        class="bi bi-grid"> </i>
+                                </span> Dashboard</a>
                         </li>
                     </ul>
                     <form class="d-flex">

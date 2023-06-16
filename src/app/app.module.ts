@@ -12,7 +12,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { ComentariosService } from './services/comentarios.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginUsersComponent } from './components/login-users/login-users.component';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
@@ -35,6 +35,7 @@ import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-c
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
 import { LoginGuard } from './guards/login.guard';
 import { Routes } from '@angular/router';
+
 
 const routes: Routes = [
 
@@ -80,7 +81,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [ComentariosService, LoginGuard],
+  providers: [ComentariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

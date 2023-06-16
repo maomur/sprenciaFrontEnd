@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, UrlTree } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
+import jwt_decode from "jwt-decode";
 import Swal from 'sweetalert2';
 
 
@@ -9,25 +10,48 @@ import Swal from 'sweetalert2';
 })
 export class LoginGuard implements CanActivate {
 
-  constructor(private router: Router) { }
-
-
-  //Verificar acceso a contenidos restringidos
-  canActivate(): boolean | UrlTree {
-    let token: string | null = localStorage.getItem('token');
-    if (token === null) {
-      Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'No tienes permiso para acceder a este contenido',
-        timer: 4500
-      })
-      this.router.navigate(['/']);
-      return false
-    }
-    return true;
+  constructor(private router: Router) {
+    this.checkExpiration()
   }
 
+
+
+  checkExpiration() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const tokenPayload: any = jwt_decode(token);
+      const expirationDate = new Date(tokenPayload.exp_date * 1000);
+      const currentDate = new Date();
+
+      if (expirationDate < currentDate) {
+        this.sesionExpirada()
+      }
+    }
+  }
+
+  //Verificar acceso a contenidos restringidos
+  canActivate(): boolean {
+    if (localStorage.getItem('token') !== null) {
+      return true;
+    } else {
+      alert('Zona privada, necesitas usuario y contraseña')
+      this.router.navigate(['/'])
+      return false;
+    }
+  }
+
+  sesionExpirada() {
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Sesión Expirada',
+      timer: 4500
+    })
+    localStorage.removeItem('token');
+    localStorage.removeItem('roll');
+    this.router.navigate(['/'])
+  }
 
   //Cerrar sesión
   logout() {
@@ -39,6 +63,7 @@ export class LoginGuard implements CanActivate {
     })
     localStorage.removeItem('token');
     localStorage.removeItem('roll');
+    this.router.navigate(['/'])
   }
 
 
