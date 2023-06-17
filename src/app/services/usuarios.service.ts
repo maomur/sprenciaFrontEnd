@@ -67,13 +67,13 @@ export class UsuarioService {
     }
 
     //Actualizar un usuario por Id
-    updateUserById(id: number): Promise<any> {
+    updateUserById(id: number, formValue: any): Promise<any> {
         const httpOptions = {
             headers: new HttpHeaders(
                 { authorization: localStorage.getItem('token')! }
             )
         }
-        return lastValueFrom(this.httpClient.put<any>(this.baseUrl + 'update/' + id, httpOptions))
+        return lastValueFrom(this.httpClient.put<any>(this.baseUrl + 'update/' + id, formValue, httpOptions))
     }
 }
 

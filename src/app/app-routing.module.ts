@@ -42,7 +42,6 @@ const routes: Routes = [
     path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard, AdminGuard],
     children: [
       { path: 'listar-cursos', component: DashboardListaCursosComponent },
-      { path: 'editar-curso', component: DashboardEditarCursoComponent },
       { path: 'nuevo-curso', component: DashboardNuevoCursoComponent },
       { path: 'editar-curso/:id', component: DashboardEditarCursoComponent },
       { path: 'listar-usuarios', component: DashboardListaUsuariosComponent },

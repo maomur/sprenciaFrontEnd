@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from 'src/app/interfaces/usuario.interface';
+import { CiudadesService } from 'src/app/services/ciudades.service';
 import { UsuarioService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -12,60 +12,69 @@ import Swal from 'sweetalert2';
 })
 export class DashboardEditarUsuarioComponent {
 
-  public miUsuario: Usuario | any;
+  public id: string | any;
+  public ciudades: any[] = [];
 
-  createForm: FormGroup;
+  formulario: FormGroup;
 
 
-  ngOnInit() {
-    this.route.params.subscribe(async params => {
-      let id = parseInt(params['id']);
-      this.miUsuario = await this.UsuariosService.getUserById(id)
-    })
+  constructor(private activateRoute: ActivatedRoute, private usuarioService: UsuarioService, private router: Router, private ciudadesService: CiudadesService) {
+
+    this.formulario = new FormGroup(
+      {
+        name: new FormControl('', []),
+        lastname: new FormControl('', []),
+        ciudad: new FormControl('', []),
+        picture: new FormControl('', []),
+        email: new FormControl('', []),
+        password: new FormControl('', []),
+        roll: new FormControl('', []),
+      }
+    )
   }
 
-  constructor(private router: Router, private UsuariosService: UsuarioService, private route: ActivatedRoute) {
+  async ngOnInit() {
 
-    this.createForm = new FormGroup({
-      name: new FormControl('', []),
-      lastname: new FormControl('', []),
-      ciudad: new FormControl('', []),
-      picture: new FormControl('', []),
-      email: new FormControl('', []),
-      password: new FormControl('', []),
-      repitepassword: new FormControl('', []),
-      roll: new FormControl('', []),
+    this.ciudades = await this.ciudadesService.getAll();
+
+    this.activateRoute.params.subscribe(async params => {
+      const id = params['id'];
+      this.id = id;
+      const miUsuario = await this.usuarioService.getUserById(id);
+      const { id: _, isDelete, ...usuarioSinId } = miUsuario;
+      this.formulario.setValue(usuarioSinId);
     })
   }
 
   async onSubmit() {
-    //AQUÍ?
-    this.route.params.subscribe(async params => {
-      let id = parseInt(params['id']);
-      this.miUsuario = await this.UsuariosService.getUserById(id)
-      console.log(this.miUsuario)
-    })
-
-
-    const response = await this.UsuariosService.updateUserById(this.miUsuario);
-    console.log(response)
-
-    if (response.affected) {
+    const resultado = await this.usuarioService.updateUserById(this.id, this.formulario.value);
+    if (resultado) {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Usuario creado con Éxito',
+        title: 'Usuario actualizado con éxito',
         showConfirmButton: false,
         timer: 4500
       })
       this.router.navigate(['/dashboard/listar-usuarios']);
     } else {
-      console.log(response);
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'ERROR: No se ha actualizado ningún curso',
+        showConfirmButton: false,
+        timer: 4500,
+      })
     }
   }
 
-
-
+  checkControl(controlName: string, errorName: string) {
+    if (this.formulario.get(controlName)?.hasError(errorName) && this.formulario.get(controlName)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 
 }

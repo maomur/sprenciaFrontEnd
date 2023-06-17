@@ -5,45 +5,77 @@ import { Comentario } from 'src/app/interfaces/comentario.interface';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { ComentariosService } from 'src/app/services/comentarios.service';
 import { CursosService } from 'src/app/services/cursos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard-editar-comentarios',
   templateUrl: './dashboard-editar-comentarios.component.html',
   styleUrls: ['./dashboard-editar-comentarios.component.css']
 })
-export class DashboardEditarComentariosComponent implements OnInit {
+export class DashboardEditarComentariosComponent {
+
+  createForm: FormGroup;
 
   public miComentario: Comentario | any;
   public cursos: Curso[] = [];
 
-  createForm: FormGroup;
+  public id: string | any;
 
-  constructor(private router: Router, private CommentariosService: ComentariosService, private route: ActivatedRoute, private CursosService: CursosService) {
+
+  constructor(private router: Router, private CommentariosService: ComentariosService, private cursosService: CursosService, private route: ActivatedRoute) {
 
     this.createForm = new FormGroup(
       {
         comentario: new FormControl('', []),
-        curso: new FormControl('', [])
+        usuario: new FormControl('', []),
+        curso: new FormControl()
       }
     )
-
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.cursos = await this.cursosService.getAll()
     this.route.params.subscribe(async params => {
-      let id = parseInt(params['id']);
-      this.miComentario = await this.CommentariosService.getById(id);
-      this.cursos = await this.CursosService.getAll();
+      const id = params['id'];
+      this.id = id;
+
+      const miComentario = await this.CommentariosService.getById(id);
+
+      delete miComentario.id;
+      delete miComentario.fecha_comentario;
+      delete miComentario.estado;
+      delete miComentario.isDelete;
+      delete miComentario.curso_id;
+
+      this.createForm.setValue(miComentario)
+
     })
   }
 
   async onSubmit() {
-    // const response = await this.CommentariosService.create(this.createForm)
-    const newCommentario = new FormData();
-    const response = await this.CommentariosService.create(newCommentario)
 
-    console.log(newCommentario)
-    console.log(this.createForm.value)
+    const respuesta = await this.CommentariosService.editCommentById(this.id, this.createForm.value)
+
+    if (respuesta.affectedRows) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario actualizado con éxito',
+        showConfirmButton: false,
+        timer: 4500
+      })
+      this.router.navigate(['/dashboard/listar-comentarios']);
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'ERROR: No se ha actualizado ningún curso',
+        showConfirmButton: false,
+        timer: 4500,
+      })
+    }
+
   }
 
 }

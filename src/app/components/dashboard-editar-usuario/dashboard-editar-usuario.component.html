@@ -1,30 +1,24 @@
 <div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Crear Usuario</span></div>
 <div class="container p-5">
-    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="text" placeholder="Nombre" formControlName="name"
-                    [value]="miUsuario?.name">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="name">
             </div>
             <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="text" placeholder="Apellidos" formControlName="lastname"
-                    [value]="miUsuario?.lastname">
+                <input class="form-control" type="text" placeholder="Apellidos" formControlName="lastname">
             </div>
             <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="text" placeholder="Ciudad" formControlName="ciudad"
-                    [value]="miUsuario?.ciudad">
+                <select class="form-select text-secondary" formControlName="ciudad">
+                    <option value="">-- Ciudad --</option>
+                    <option value="{{ciudad?.ciudad}}" *ngFor="let ciudad of ciudades">{{ciudad?.ciudad}}</option>
+                </select>
             </div>
             <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="text" placeholder="Email" formControlName="email"
-                    [value]="miUsuario?.email">
+                <input class="form-control" type="text" placeholder="Email" formControlName="email">
             </div>
             <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="password" placeholder="Password" formControlName="password"
-                    [value]="miUsuario?.password">
-            </div>
-            <div class="col-12 col-md-4 p-2">
-                <input class="form-control" type="password" placeholder="Repite Password"
-                    formControlName="repitepassword" [value]="miUsuario?.password">
+                <input class="form-control" type="password" placeholder="Password" formControlName="password">
             </div>
             <div class="col-12 col-md-4 p-2">
                 <select class="form-select text-secondary" formControlName="roll">

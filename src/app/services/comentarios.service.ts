@@ -44,7 +44,7 @@ export class ComentariosService {
   }
 
   //Ver comentario por ID
-  getById(id: number): Promise<any[]> {
+  getById(id: string) {
     return lastValueFrom(this.httpClient.get<any>(this.baseUrl + id))
   }
 
@@ -54,13 +54,15 @@ export class ComentariosService {
   }
 
   //Editar comentario
-  editCommentById(idComentario: number) {
+  editCommentById(id: string, formValue: any) {
     const httpOptions = {
       headers: new HttpHeaders(
-        { authorization: localStorage.getItem('token')! }
-      )
+        {
+          'Authorization': localStorage.getItem('token')!,
+          'Content-Type': 'application/json'
+        })
     }
-    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'update/' + idComentario, httpOptions))
+    return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl}update/${id}`, formValue, httpOptions))
   }
 
 

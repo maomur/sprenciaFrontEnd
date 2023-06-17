@@ -1,37 +1,36 @@
 <div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Editar Curso</span></div>
 <div class="container p-5">
-    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
         <div>
             <div class="row">
                 <div class="col-12 col-md-8 p-3">
-                    <input type="text" class="form-control" name="nombre" [value]="miCurso?.nombre">
+                    <input type="text" class="form-control" name="nombre" formControlName="nombre">
                     <p class="text-danger small px-2" *ngIf="checkControl('nombre', 'required')">Falta campo "Nombre del
                         Curso"</p>
                 </div>
                 <div class="col-12 col-md-4 p-3">
                     <input type="number" class="form-control" placeholder="Rating" name="rating"
-                        [value]="miCurso?.rating">
+                        formControlName="rating">
                     <p class="text-danger small px-2" *ngIf="checkControl('rating', 'required')">Falta campo "Rating"
                     </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <input type="text" class="form-control" placeholder="Ciudad" name="ciudad"
-                        [value]="miCurso?.ciudad">
+                    <input type="text" class="form-control" placeholder="Ciudad" name="ciudad" formControlName="ciudad">
                     <p class="text-danger small px-2" *ngIf="checkControl('ciudad', 'required')">Falta campo "Ciudad"
                     </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
                     <input type="number" class="form-control" placeholder="Precio" name="precio"
-                        [value]="miCurso?.precio">
+                        formControlName="precio">
                     <p class="text-danger small px-2" *ngIf="checkControl('precio', 'required')">Falta campo "Precio"
                     </p>
                 </div>
                 <div class="col-12 col-md-3 p-3">
                     <input type="text" class="form-control" placeholder="Categoría" name="categoria"
-                        [value]="miCurso?.categoria">
+                        formControlName="categoria">
                 </div>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" name="horario">
+                    <select class="form-select" name="horario" formControlName="horario">
                         <option value="" selected>Horario</option>
                         <option value="Mañana">Mañana</option>
                         <option value="tarde">Tarde</option>
@@ -43,31 +42,31 @@
             </div>
             <div>
                 <textarea class="form-control" rows="5" placeholder="Descripción" name="descripcion"
-                    [value]="miCurso?.descripcion"></textarea>
+                    formControlName="descripcion"></textarea>
             </div>
             <p class="text-danger small px-2" *ngIf="checkControl('descripcion', 'required')">Falta campo "Descripción
                 del Curso"</p>
             <div class="row align-items-end">
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_inicio">Fecha Inicio</label>
-                    <input type="date" class="form-control" name="fecha_inicio" [value]="miCurso?.fecha_inicio">
+                    <input type="date" class="form-control" name="fecha_inicio" formControlName="fecha_inicio">
                 </div>
                 <p class="text-danger small px-2" *ngIf="checkControl('fecha_inicio', 'required')">Falta campo "Fecha
                     Inicio"</p>
                 <div class="col-12 col-md-3 p-3">
                     <label class="text-secondary" for="fecha_fin">Fecha Inicio</label>
-                    <input type="date" class="form-control" name="fecha_fin" [value]="miCurso?.fecha_fin">
+                    <input type="date" class="form-control" name="fecha_fin" formControlName="fecha_fin">
                 </div>
                 <p class="text-danger small px-2" *ngIf="checkControl('fecha_fin', 'required')">Falta campo "Fecha
                     Fin"</p>
                 <div class="col-12 col-md-3 p-3">
                     <input type="number" class="form-control" placeholder="Total Horas" name="total_horas"
-                        [value]="miCurso?.total_horas">
+                        formControlName="total_horas">
                 </div>
                 <p class="text-danger small px-2" *ngIf="checkControl('total_horas', 'required')">Falta campo "Total
                     Horas"</p>
                 <div class="col-12 col-md-3 p-3">
-                    <select class="form-select" name="estado" [value]="miCurso?.estado">
+                    <select class="form-select" name="estado" formControlName="estado">
                         <option class="form-control" value="" default>Estado</option>
                         <option class="form-control" value="activo" default>Activo</option>
                         <option class="form-control" value="inactivo" default>Inactivo</option>

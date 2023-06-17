@@ -1,21 +1,23 @@
-<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Editar Comentario</span></div>
+<div class="bg-dark p-3 text-light fs-4">Sprencia Admin >> <span class="text-secondary">Crear Comentario</span></div>
 <div class="container p-5">
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <div class="p-2">
-            <textarea class="form-control" cols="30" rows="4" name="comentario"
-                [value]="miComentario?.comentario"></textarea>
+            <textarea class="form-control" cols="30" rows="4" placeholder="Comentario"
+                formControlName="comentario"></textarea>
         </div>
         <div class="p-2">
-            <select class="form-select" formControlName="curso">
-                <option class="fw-bold text-primary" value="" selected>{{miComentario?.curso}}</option>
-                <option *ngFor="let curso of cursos" value="{{curso?.nombre}}">{{curso?.nombre}}</option>
+            <select class="form-select text-secondary" formControlName="curso">
+                <option value="">--- Curso ---</option>
+                <option *ngFor="let curso of cursos" value="{{curso?.nombre}}">
+                    {{curso?.nombre}}</option>
             </select>
         </div>
         <div class="row p-2">
-            <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-success" type="submit" value="Actualizar">
+            <div class="p-2 col-12 col-md-3"><input class="w-100 btn btn-success" type="submit"
+                    value="Enviar Comentario">
             </div>
             <div class="p-2 col-12 col-md-3"><a [routerLink]="['/dashboard/listar-comentarios']"><input
-                        class="w-100 btn btn-dark" type="submit" value="Cancelar"></a></div>
+                        class="w-100 btn btn-dark" type="butt" value="Cancelar"></a></div>
         </div>
     </form>
 </div>
