@@ -6,13 +6,12 @@ import { CursoComponent } from './components/curso/curso.component';
 import { HomeComponent } from './components/home/home.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { ComentariosService } from './services/comentarios.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginUsersComponent } from './components/login-users/login-users.component';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
@@ -33,8 +32,8 @@ import { DashboardCrearComentarioComponent } from './components/dashboard-crear-
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-curso/dashboard-detalle-curso.component';
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
-import { LoginGuard } from './guards/login.guard';
 import { Routes } from '@angular/router';
+import { RecuperarClaveCodigoComponent } from './components/recuperar-clave-codigo/recuperar-clave-codigo.component';
 
 
 const routes: Routes = [
@@ -49,7 +48,6 @@ const routes: Routes = [
     HomeComponent,
     SobreNosotrosComponent,
     PerfilComponent,
-    UsuariosComponent,
     RegistroComponent,
     ContactoComponent,
     HeaderComponent,
@@ -73,6 +71,7 @@ const routes: Routes = [
     DashboardHomeComponent,
     DashboardDetalleCursoComponent,
     DashboardDetalleUsuarioComponent,
+    RecuperarClaveCodigoComponent,
   ],
   imports: [
     BrowserModule,

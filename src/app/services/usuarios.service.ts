@@ -35,10 +35,8 @@ export class UsuarioService {
     }
 
     //Registro de usuarios
-    register(pForm: any): Promise<any> {
-        return lastValueFrom(
-            this.httpClient.post<any>(this.baseUrl + 'create/', pForm)
-        )
+    register(pData: FormData): Promise<any> {
+        return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'register', pData))
     }
 
     //Crear usuario
@@ -66,6 +64,17 @@ export class UsuarioService {
         return lastValueFrom(this.httpClient.get<any>(this.baseUrl + id))
     }
 
+    //Obtener un usuario por email
+    getUserByEmail(email: string): Promise<any> {
+        return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'searchUser/' + email))
+    }
+
+
+    //Obtener un email de un usuario
+    getEmail(email: string): Promise<any> {
+        return lastValueFrom(this.httpClient.get<any>(this.baseUrl + 'emailUser/' + email))
+    }
+
     //Actualizar un usuario por Id
     updateUserById(id: number, formValue: any): Promise<any> {
         const httpOptions = {
@@ -74,6 +83,11 @@ export class UsuarioService {
             )
         }
         return lastValueFrom(this.httpClient.put<any>(this.baseUrl + 'update/' + id, formValue, httpOptions))
+    }
+
+    //Recuperar Clave
+    resetPassword(formValue: any): Promise<any> {
+        return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl}/reset-password`, formValue))
     }
 }
 

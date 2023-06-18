@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CiudadesService } from 'src/app/services/ciudades.service';
 import { UsuarioService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -9,105 +10,87 @@ import Swal from 'sweetalert2';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent {
 
-  registerForm: FormGroup;
+  public ciudades: any[] = [];
 
-  constructor(private usuariosService: UsuarioService, private router: Router) {
-    this.registerForm = new FormGroup({
+  createForm: FormGroup;
+
+  constructor(private usuariosService: UsuarioService, private router: Router, private CiudadesService: CiudadesService) {
+
+    this.createForm = new FormGroup({
+
       name: new FormControl('', [
-        Validators.required
+        Validators.required, Validators.minLength(2)
       ]),
       lastname: new FormControl('', [
-        Validators.required
+        Validators.required, Validators.minLength(2)
       ]),
       ciudad: new FormControl('', [
-        Validators.required
+        Validators.required, Validators.minLength(2)
       ]),
       picture: new FormControl('', []),
       email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/\S+\@\S+\.\S+/)
+        Validators.required, Validators.minLength(2), Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
       ]),
       password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(5)
+        Validators.required, Validators.minLength(2)
       ]),
-      accept: new FormControl('', []),
-      repitePassword: new FormControl('', []),
+      repitepassword: new FormControl('', [
+        Validators.required, Validators.minLength(2)
+      ]),
 
-    }, [this.comparePass])
-  }
-
-
-  ngOnInit(): void {
+    }, [this.passwordCompare])
 
   }
 
 
-  checkControl(controlName: string, errorName: string): boolean {
-    if (this.registerForm.get(controlName)?.hasError(errorName) && this.registerForm.get(controlName)?.touched) {
+  async ngOnInit() {
+    this.ciudades = await this.CiudadesService.getAll()
+  }
+
+  async onSubmit() {
+    let resultado = await this.usuariosService.register(this.createForm.value);
+
+    if (resultado.affectedRows) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario creado con Éxito',
+        showConfirmButton: false,
+        timer: 4500
+      })
+      this.router.navigate(['/']);
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'ERROR: No se ha agregado ningún usuario',
+        showConfirmButton: false,
+
+        timer: 4500
+      })
+      console.log(resultado)
+    }
+  }
+
+  checkControl(controlName: string, errorName: string) {
+    if (this.createForm.get(controlName)?.hasError(errorName) && this.createForm.get(controlName)?.touched) {
       return true;
     } else {
       return false;
     }
   }
 
-  comparePass(form: AbstractControl): any {
-    const passValue = form.get('password')?.value;
-    const repitePassValue = form.get('repitePassword')?.value
+  passwordCompare(pForm: AbstractControl): any {
+    const password = pForm.get('password')?.value;
+    const repitePass = pForm.get('repitepassword')?.value;
 
-    if (passValue !== repitePassValue) {
-      return true
+    if (password !== repitePass) {
+      return { 'passwordcompare': true }
     }
-    return null
+    return null;
   }
-
-  async getDataRegister() {
-    const { name, lastname, ciudad, picture, email, password, repitepassword, roll } = this.registerForm.value;
-
-    const newForm = new FormData();
-
-    newForm.append('name', name)
-    newForm.append('lastname', lastname)
-    newForm.append('ciudad', ciudad)
-    newForm.append('picture', picture)
-    newForm.append('email', email)
-    newForm.append('password', password)
-    newForm.append('repitepassword', repitepassword)
-    newForm.append('roll', roll)
-
-    let response = await this.usuariosService.register(newForm);
-    console.log(response);
-
-    if (response) {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Registro creado con Éxito',
-        showConfirmButton: false,
-        timer: 4500
-      })
-      this.router.navigate(['/']);
-    } else {
-      console.log(response);
-    }
-  }
-
-
-  // async getDataRegister() {
-  //   this.usuariosService.register(this.registerForm.value).subscribe(response => {
-  //     console.log(response);
-  //     if (response) {
-  //       alert('Usuario resgistrado con éxito');
-  //       this.router.navigate(['/'])
-  //     } else {
-  //       alert('Fallo en el registro')
-  //     }
-  //   })
-  // }
-
-
 
 
 }

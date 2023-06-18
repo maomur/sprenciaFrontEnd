@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
@@ -25,16 +24,17 @@ import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-c
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
 import { LoginGuard } from './guards/login.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { RecuperarClaveCodigoComponent } from './components/recuperar-clave-codigo/recuperar-clave-codigo.component';
 
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "sobre-nosotros", component: SobreNosotrosComponent },
-  { path: "usuarios", component: UsuariosComponent },
   { path: "perfil", component: PerfilComponent },
   { path: "registro", component: RegistroComponent },
   { path: "contacto", component: ContactoComponent },
   { path: "recuperar-clave", component: RecuperarClaveComponent },
+  { path: "recuperar-codigo", component: RecuperarClaveCodigoComponent },
   { path: "curso/:id", component: CursoComponent },
   { path: "resultado-categoria/:categoria", component: CursosCategoriaComponent },
   { path: 'cursos', component: CursosGridComponent },
