@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Usuario } from '../interfaces/usuario.interface';
 import { lastValueFrom, Observable } from 'rxjs'
 
@@ -9,6 +9,9 @@ import { lastValueFrom, Observable } from 'rxjs'
 
 export class UsuarioService {
     baseUrl: string = 'http://localhost:3330/api/users/';
+
+    code: EventEmitter<string> = new EventEmitter<string>();
+
 
     constructor(private httpClient: HttpClient) { }
 

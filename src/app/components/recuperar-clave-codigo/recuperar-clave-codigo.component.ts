@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recuperar-clave-codigo',
@@ -10,7 +11,7 @@ import { UsuarioService } from 'src/app/services/usuarios.service';
 })
 export class RecuperarClaveCodigoComponent {
 
-  public code: string | any;
+  code: string = "";
 
   createForm: FormGroup;
 
@@ -23,10 +24,29 @@ export class RecuperarClaveCodigoComponent {
     })
   }
 
+  ngOnInit(): void {
+
+    this.usuarioService.code.subscribe(
+      code => {
+        this.code = code;
+      }
+    )
+    console.log('CODE', this.code)
+
+  }
+
   async onSubmit() {
 
-
-    console.log('LÓGICA PARA ACTUALIZAR EL USUARIO')
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Su clave se ha actualizado con éxito',
+      showConfirmButton: false,
+      timer: 5500
+    })
+    console.log('CODE ONSUBMIT', this.code)
+    this.router.navigate(['/login'])
+    console.log('LÓGICA PARA ACTUALIZAR USUARIO')
 
   }
 

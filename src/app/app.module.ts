@@ -34,6 +34,7 @@ import { DashboardDetalleCursoComponent } from './components/dashboard-detalle-c
 import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle-usuario/dashboard-detalle-usuario.component';
 import { Routes } from '@angular/router';
 import { RecuperarClaveCodigoComponent } from './components/recuperar-clave-codigo/recuperar-clave-codigo.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -72,6 +73,7 @@ const routes: Routes = [
     DashboardDetalleCursoComponent,
     DashboardDetalleUsuarioComponent,
     RecuperarClaveCodigoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

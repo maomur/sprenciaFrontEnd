@@ -25,6 +25,8 @@ import { DashboardDetalleUsuarioComponent } from './components/dashboard-detalle
 import { LoginGuard } from './guards/login.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { RecuperarClaveCodigoComponent } from './components/recuperar-clave-codigo/recuperar-clave-codigo.component';
+import { LoginUsersComponent } from './components/login-users/login-users.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent },
   { path: "contacto", component: ContactoComponent },
   { path: "recuperar-clave", component: RecuperarClaveComponent },
+  { path: "login", component: LoginComponent },
   { path: "recuperar-codigo", component: RecuperarClaveCodigoComponent },
   { path: "curso/:id", component: CursoComponent },
   { path: "resultado-categoria/:categoria", component: CursosCategoriaComponent },
