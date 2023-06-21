@@ -1,6 +1,5 @@
 export const environment = {
-    production: true,
+    production: false,
     apiUrl: 'https://backend.sprenciaproject.liveroad.us/'
-
 };
 

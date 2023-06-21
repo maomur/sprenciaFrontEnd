@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { FiltrosService } from 'src/app/services/filtros.service';
 import { CursosService } from 'src/app/services/cursos.service';
@@ -34,7 +34,7 @@ export class HomeComponent {
 
 
 
-  constructor(private CursosService: CursosService, private FiltrosService: FiltrosService) {
+  constructor(private CursosService: CursosService, private FiltrosService: FiltrosService, private renderer: Renderer2) {
   }
 
   async ngOnInit() {
@@ -89,6 +89,13 @@ export class HomeComponent {
 
   ordenarPrecio() {
     this.cursos.sort((a, b) => a.precio - b.precio)
+  }
+
+  scrollToTop() {
+    const element = document.getElementById('top');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
 

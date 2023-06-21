@@ -8,7 +8,7 @@ import { Comentario } from '../interfaces/comentario.interface';
 })
 export class ComentariosService {
 
-  private baseUrl: string = 'http://localhost:3330/api/comments/';
+  private baseUrl: string = 'https://backend.sprenciaproject.liveroad.us/api/comments/';
 
 
   constructor(private httpClient: HttpClient) { }

@@ -7,7 +7,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class CiudadesService {
 
-  private baseUrl: string = 'http://localhost:3330/api/ciudades/'
+  private baseUrl: string = 'https://backend.sprenciaproject.liveroad.us/api/ciudades/'
 
   constructor(private httpClient: HttpClient) { }
 

@@ -8,11 +8,11 @@ import { Curso } from '../interfaces/curso.interface';
 })
 export class FiltrosService {
 
-  private baseUrlCategorias: string = 'http://localhost:3330/api/categories/'
+  private baseUrlCategorias: string = 'https://backend.sprenciaproject.liveroad.us/api/categories/'
 
-  private baseUrlCiudades: string = 'http://localhost:3330/api/ciudades/'
+  private baseUrlCiudades: string = 'https://backend.sprenciaproject.liveroad.us/api/ciudades/'
 
-  private baseUrlHorarios: string = 'http://localhost:3330/api/horarios/'
+  private baseUrlHorarios: string = 'https://backend.sprenciaproject.liveroad.us/api/horarios/'
 
 
   constructor(private httpClient: HttpClient) { }

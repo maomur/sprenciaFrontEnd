@@ -9,7 +9,7 @@ import { Curso } from '../interfaces/curso.interface';
 })
 export class CursosService {
 
-  private baseUrl: string = 'http://localhost:3330/api/courses/';
+  private baseUrl: string = 'https://backend.sprenciaproject.liveroad.us/api/courses/';
 
 
   constructor(private httpClient: HttpClient) { }

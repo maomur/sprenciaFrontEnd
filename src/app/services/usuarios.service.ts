@@ -8,7 +8,7 @@ import { lastValueFrom, Observable } from 'rxjs'
 })
 
 export class UsuarioService {
-    baseUrl: string = 'http://localhost:3330/api/users/';
+    baseUrl: string = 'https://backend.sprenciaproject.liveroad.us/api/users/';
 
     code: EventEmitter<string> = new EventEmitter<string>();
 

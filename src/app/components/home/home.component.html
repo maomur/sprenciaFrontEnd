@@ -1,7 +1,7 @@
 <!------------- Banner Start ------------->
 
 <div class="shadow mb-5">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel p-5">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -12,29 +12,37 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../assets/img/sprencia-market-place.jpg" class="d-block w-100 img-banner"
-                    alt="Cursos Sprencia">
-                <div class="carousel-caption d-block">
-                    <h2 class="title-carrousel">Cursos Prescenciales y Virtuales</h2>
-                    <p class="subtitle-carrousel">Aprende nuevas habilidades y aprovecha de tu experiencia</p>
+                <div>
+                    <img src="../../assets/img/sprencia-market-place.jpg" class="d-block w-100 img-banner"
+                        alt="Cursos Sprencia">
+                    <div class="carousel-caption d-block p-0 p-md-5">
+                        <h2 class="title-carrousel">Cursos Prescenciales y Virtuales</h2>
+                        <p class="subtitle-carrousel">Aprende nuevas habilidades y aprovecha de tu experiencia</p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="../../assets/img/sprencia-marketplace.jpg" class="d-block w-100 img-banner"
-                    alt="Cursos Digitales Sprencia">
-                <div class="carousel-caption d-block">
-                    <h2 class="title-carrousel">El Momento es ahora</h2>
-                    <p class="subtitle-carrousel">La educación es un proceso continuo que puede enriquecer tu vida en
-                        cualquier momento.</p>
+                <div>
+                    <img src="../../assets/img/sprencia-marketplace.jpg" class="d-block w-100 img-banner"
+                        alt="Cursos Digitales Sprencia">
+                    <div class="carousel-caption d-block p-0 p-md-5">
+                        <h2 class="title-carrousel">El Momento es ahora</h2>
+                        <p class="subtitle-carrousel">La educación es un proceso continuo que puede enriquecer tu vida
+                            en
+                            cualquier momento.</p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="../../assets/img/sprencia-marketplace-categoria.jpg" class="d-block w-100 img-banner"
-                    alt="Cursos Digitales Sprencia">
-                <div class="carousel-caption d-block">
-                    <h2 class="title-carrousel">¿Por qué Sprencia?</h2>
-                    <p class="subtitle-carrousel">Nunca es tarde para perseguir tus sueños y metas, y la educación puede
-                        ayudarte a alcanzarlos.</p>
+                <div>
+                    <img src="../../assets/img/sprencia-marketplace-categoria.jpg" class="d-block w-100 img-banner"
+                        alt="Cursos Digitales Sprencia">
+                    <div class="carousel-caption d-block p-0 p-md-5">
+                        <h2 class="title-carrousel">¿Por qué Sprencia?</h2>
+                        <p class="subtitle-carrousel">Nunca es tarde para perseguir tus sueños y metas, y la educación
+                            puede
+                            ayudarte a alcanzarlos.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,7 +114,7 @@
         <div class="card-cursos cardW">
             <div class="card shadow border-0 cardWBox" *ngFor="let curso of cursos; let i = index">
                 <div class="cardBoxContent">
-                    <a href="/curso/{{curso.id}}"><img [src]="curso.foto1" class="card-img-top w-100"
+                    <a [routerLink]="['/curso/' + curso.id]"><img [src]="curso.foto1" class="card-img-top w-100"
                             alt="Curso Administración de Redes Sociales"></a>
                     <div class="infoCurso">
                         <p>{{curso.fecha_inicio}}</p>
@@ -117,15 +125,16 @@
                         <h3 class="fs-4 text-end">{{curso.precio}}€</h3>
                     </div>
                     <div>
-                        <a href="/curso/{{curso.id}}" class="btn btn-primary w-100">Ver Info
+                        <a [routerLink]="['/curso/' + curso.id]" (click)="scrollToTop()"
+                            class="btn btn-primary w-100">Ver Info
                             <span class="px-1"></span></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="text-center my-5 mx-0 mx-md-5"><a href="/cursos">
-            <button class="btn btn-primary w-50 w-md-50">Ver
+    <div class="text-center my-5 mx-0 mx-md-5"><a [routerLink]="['/cursos']" (click)="scrollToTop()">
+            <button class="btn btn-primary px-md-5 py-md-2">Ver
                 todos</button>
         </a></div>
 </div>
@@ -144,7 +153,7 @@
     <div class="mb-5">
         <a target="_blank"
             href="https://wa.me/34641870894?text=Hola%2C%20quiero%20una%20asesoría%20personalizada%20sobre%20un%20curso"><button
-                class="btn btn-dark my-3 w-25 w-md-100"><span><i class="bi bi-whatsapp mx-2"></i>Solicitar
+                class="btn btn-dark my-md-3 px-md-5 py-md-2"><span><i class="bi bi-whatsapp mx-2"></i>Solicitar
                     Asesoría</span></button></a>
     </div>
 </div>
@@ -174,8 +183,10 @@
                 tecnología y negocios hasta artes y humanidades. Además, nuestros cursos están diseñados para ser
                 flexibles y adaptados
                 a las necesidades individuales de cada estudiante.</p>
-            <button class="btn btn-primary w-100 my-4" routerLink="active" href="/sobre-nosotros">Conocer
-                Más</button>
+            <div class="text-center my-5">
+                <button class="btn btn-primary px-md-5 py-md-2" routerLink="active" href="/sobre-nosotros">Conocer
+                    Más</button>
+            </div>
         </section>
         <section class="col-12 col-md-6">
             <div><img class="w-100" src="../../assets/img/sprencia-cursos-seniors.png" alt="Sobre Sprencia"></div>

@@ -9,8 +9,8 @@
         <div class="card-cursos cardW">
             <div class="card shadow border-0 cardWBox" *ngFor="let curso of miCurso; let i = index">
                 <div class="cardBoxContent">
-                    <a href="/curso/{{curso.id}}"><img [src]="curso.foto1" class="card-img-top w-100"
-                            alt="{{curso.nombre}}"></a>
+                    <a [routerLink]="['/curso/' + curso.id]" (click)="scrollToTop()"><img [src]="curso.foto1"
+                            class="card-img-top w-100" alt="{{curso.nombre}}"></a>
                     <div class="infoCurso">
                         <p>{{curso.fecha_inicio}}</p>
                     </div>
@@ -21,7 +21,8 @@
 
                     </div>
                     <div>
-                        <a href="/curso/{{curso.id}}" class="btn btn-primary w-100">Ver Info</a>
+                        <a [routerLink]="['/curso/' + curso.id]" (click)="scrollToTop()"
+                            class="btn btn-primary w-100">Ver Info</a>
                     </div>
                 </div>
             </div>
