@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sprencia APP</string>
+    <string name="title_activity_main">Sprencia APP</string>
+    <string name="package_name">us.liveroad.sprenciaproject</string>
+    <string name="custom_url_scheme">us.liveroad.sprenciaproject</string>
+</resources>

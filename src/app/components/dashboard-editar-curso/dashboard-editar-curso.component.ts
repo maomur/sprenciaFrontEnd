@@ -49,8 +49,6 @@ export class DashboardEditarCursoComponent {
       //Rellenar el formulario
       this.formulario.setValue(cursoSinId);
     })
-
-
   }
 
 

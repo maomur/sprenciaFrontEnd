@@ -1,0 +1,7 @@
+{
+  "name": "sprencia-front-end",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
